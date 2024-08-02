@@ -1,7 +1,7 @@
 package com.ghaemkarimi.daneshjooyar.customView
 
 enum class Type {
-    HOME, ABOUT_US, DOCUMENT
+    HOME, ABOUT, DOCUMENT
 }
 
 interface Item {

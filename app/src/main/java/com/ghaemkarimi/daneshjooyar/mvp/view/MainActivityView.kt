@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ghaemkarimi.daneshjooyar.R
-import com.ghaemkarimi.daneshjooyar.customView.CustomNav
 import com.ghaemkarimi.daneshjooyar.customView.Item
 import com.ghaemkarimi.daneshjooyar.customView.Type
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityMainBinding
@@ -24,10 +23,12 @@ class MainActivityView(private val activity: AppCompatActivity) {
 
             override fun setFragment(type: Type) {
 
-                val fragment = when(type) {
-                    Type.HOME -> HomeFragment()
+                val fragment = when (type) {
+
                     Type.DOCUMENT -> DocumentFragment()
-                    Type.ABOUT_US -> AboutUsFragment()
+                    Type.ABOUT -> AboutUsFragment()
+                    Type.HOME -> HomeFragment()
+
                 }
 
                 setFragment(fragment)

@@ -13,10 +13,11 @@
         app:layout_constraintBottom_toTopOf="@+id/customNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        />
 
     <View
-        android:id="@+id/shadow1"
+        android:id="@+id/shadow_1"
         android:layout_width="0dp"
         android:layout_height="4dp"
         android:rotation="180"
@@ -26,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <View
-        android:id="@+id/shadow2"
+        android:id="@+id/shadow_2"
         android:layout_width="0dp"
         android:layout_height="8dp"
         android:background="@drawable/drop_shadow"
@@ -42,6 +43,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:srcCompat="@drawable/ic_support"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:srcCompat="@drawable/ic_daneshjooyar"
+            android:layout_gravity="center"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:srcCompat="@drawable/ic_more"
+            android:layout_gravity="end"
+            android:layout_margin="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
     </androidx.appcompat.widget.Toolbar>

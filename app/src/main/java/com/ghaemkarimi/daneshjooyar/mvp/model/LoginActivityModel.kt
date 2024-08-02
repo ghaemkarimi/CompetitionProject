@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivityModel(context: Context) {
 
-    private val pref = context.getSharedPreferences("", AppCompatActivity.MODE_PRIVATE)
+    private val pref = context.getSharedPreferences("stateLogin", AppCompatActivity.MODE_PRIVATE)
 
     fun save(state: Boolean) {
 

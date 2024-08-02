@@ -10,9 +10,22 @@ class FirstActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first)
-        Handler(mainLooper).postDelayed(
-            {startActivity(Intent(this, LoginActivity::class.java))},
-            2000
-        )
+
+        val pref = getSharedPreferences("stateLogin", MODE_PRIVATE)
+
+        val state = pref.getBoolean("state", false)
+
+        if (state)
+            Handler(mainLooper).postDelayed(
+                { startActivity(Intent(this, MainActivity::class.java)) },
+                2000
+            )
+        else
+            Handler(mainLooper).postDelayed(
+                { startActivity(Intent(this, LoginActivity::class.java)) },
+                2000
+            )
+
     }
+
 }

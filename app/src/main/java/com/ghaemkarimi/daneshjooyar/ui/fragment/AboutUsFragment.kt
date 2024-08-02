@@ -9,18 +9,13 @@ import com.ghaemkarimi.daneshjooyar.databinding.FragmentAboutUsBinding
 
 class AboutUsFragment : Fragment() {
 
-    private val binding = FragmentAboutUsBinding.inflate(LayoutInflater.from(context))
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = binding.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
+    ): View {
+        val binding = FragmentAboutUsBinding.inflate(LayoutInflater.from(context))
+        return binding.root
     }
 
 }

@@ -28,7 +28,7 @@ class CustomNav(
         }
 
         binding.aboutUs.setOnClickListener {
-            item.setFragment(Type.ABOUT_US)
+            item.setFragment(Type.ABOUT)
             aboutUs()
         }
 
