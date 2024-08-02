@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">daneshjooyar</string>
+    <string name="phone_number">شماره موبایل</string>
+    <string name="edit_number">ویرایش شماره</string>
+    <string name="text_error_code">کد تایید وارد شده نامعتبر است.</string>
+    <string name="ghavanin_daneshjooyar">قوانین دانشجویار</string>
+    <string name="document">مدارک</string>
+    <string name="about_as">درباره ما</string>
+    <string name="home">خانه</string>
+</resources>

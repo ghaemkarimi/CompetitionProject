@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@drawable/drop_shadow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/document"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_document"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/about_us"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/about_us"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_about_as"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/document"
+        app:layout_constraintEnd_toStartOf="@+id/home"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/about_us"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home_active" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_document"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_document"
+        app:layout_constraintEnd_toEndOf="@+id/document"
+        app:layout_constraintStart_toStartOf="@+id/document"
+        app:layout_constraintTop_toTopOf="@+id/document"
+        app:srcCompat="@drawable/ic_document" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_about_us"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/about_us"
+        app:layout_constraintStart_toStartOf="@+id/about_us"
+        app:layout_constraintTop_toTopOf="@+id/about_us"
+        app:layout_constraintBottom_toTopOf="@+id/txt_about_us"
+        app:srcCompat="@drawable/ic_about_as" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_home"
+        app:layout_constraintEnd_toEndOf="@+id/home"
+        app:layout_constraintStart_toStartOf="@+id/home"
+        app:layout_constraintTop_toTopOf="@+id/home"
+        app:srcCompat="@drawable/ic_home_active" />
+
+    <TextView
+        android:id="@+id/txt_document"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/document"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/document"
+        app:layout_constraintEnd_toEndOf="@+id/document"
+        app:layout_constraintStart_toStartOf="@+id/document"
+        app:layout_constraintTop_toBottomOf="@+id/ic_document" />
+
+    <TextView
+        android:id="@+id/txt_about_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_as"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/about_us"
+        app:layout_constraintEnd_toEndOf="@+id/about_us"
+        app:layout_constraintStart_toStartOf="@+id/about_us"
+        app:layout_constraintTop_toBottomOf="@+id/ic_about_us" />
+
+    <TextView
+        android:id="@+id/txt_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home"
+        android:textColor="@color/primary"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/home"
+        app:layout_constraintEnd_toEndOf="@+id/home"
+        app:layout_constraintStart_toStartOf="@+id/home"
+        app:layout_constraintTop_toBottomOf="@+id/ic_home" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
