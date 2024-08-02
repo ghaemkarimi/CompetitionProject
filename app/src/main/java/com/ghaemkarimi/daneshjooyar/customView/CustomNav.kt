@@ -48,9 +48,15 @@ class CustomNav(
 
     private fun aboutUs() {
 
+        setIcon(binding.icAboutUs, R.drawable.ic_about_us_active)
+        setTextColor(binding.txtAboutUs)
+
     }
 
     private fun home() {
+
+        setIcon(binding.icHome, R.drawable.ic_home_active)
+        setTextColor(binding.txtHome)
 
     }
 
@@ -65,10 +71,10 @@ class CustomNav(
 
     private fun setTextColor(textView: TextView) {
 
-        binding.txtDocument.setTextColor()
-        binding.txtDocument.setTextColor()
-        binding.txtDocument.setTextColor()
-        textView.setTextColor()
+        binding.txtDocument.setTextColor(context.getColor(R.color.gray))
+        binding.txtAboutUs.setTextColor(context.getColor(R.color.gray))
+        binding.txtHome.setTextColor(context.getColor(R.color.gray))
+        textView.setTextColor(context.getColor(R.color.accent))
 
     }
 
