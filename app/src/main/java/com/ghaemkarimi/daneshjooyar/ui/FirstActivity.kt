@@ -1,31 +1,30 @@
 package com.ghaemkarimi.daneshjooyar.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import com.ghaemkarimi.daneshjooyar.R
+import androidx.appcompat.app.AppCompatActivity
+import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
+import com.ghaemkarimi.daneshjooyar.mvp.model.FirstActivityModel
+import com.ghaemkarimi.daneshjooyar.mvp.presenter.FirstActivityPresenter
+import com.ghaemkarimi.daneshjooyar.mvp.view.FirstActivityView
 
-class FirstActivity : AppCompatActivity() {
+class FirstActivity : AppCompatActivity(), OnFinish {
+
+    private lateinit var presenter: FirstActivityPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_first)
+        val view = FirstActivityView(this, this)
+        setContentView(view.binding.root)
+        presenter = FirstActivityPresenter(view, FirstActivityModel(this))
+    }
 
-        val pref = getSharedPreferences("stateLogin", MODE_PRIVATE)
+    override fun onStart() {
+        super.onStart()
+        presenter.onStart()
+    }
 
-        val state = pref.getBoolean("state", false)
-
-        if (state)
-            Handler(mainLooper).postDelayed(
-                { startActivity(Intent(this, MainActivity::class.java)) },
-                2000
-            )
-        else
-            Handler(mainLooper).postDelayed(
-                { startActivity(Intent(this, LoginActivity::class.java)) },
-                2000
-            )
-
+    override fun finished() {
+        finish()
     }
 
 }

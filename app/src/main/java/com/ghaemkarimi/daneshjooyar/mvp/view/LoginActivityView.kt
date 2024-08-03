@@ -14,7 +14,7 @@ import android.widget.Toast
 import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityLoginBinding
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
-import com.ghaemkarimi.daneshjooyar.mvp.ext.Pref
+import com.ghaemkarimi.daneshjooyar.mvp.ext.SetState
 import com.ghaemkarimi.daneshjooyar.ui.FirstActivity
 import com.ghaemkarimi.daneshjooyar.ui.GhavaninActivity
 
@@ -57,14 +57,14 @@ class LoginActivityView(private val context: Context, private val onFinish: OnFi
 
     }
 
-    fun setTexts(state: Boolean = false, number: String = "", pref: Pref) {
+    fun setTexts(state: Boolean = false, number: String = "", pref: SetState) {
 
         if (state) setTextToEnterCode(number, pref)
         else setTextToEnterNumber(pref)
 
     }
 
-    private fun setTextToEnterNumber(pref: Pref) {
+    private fun setTextToEnterNumber(pref: SetState) {
 
         setText(
             "ثبت نام یا ورود",
@@ -97,7 +97,7 @@ class LoginActivityView(private val context: Context, private val onFinish: OnFi
 
     }
 
-    private fun setTextToEnterCode(number: String, pref: Pref) {
+    private fun setTextToEnterCode(number: String, pref: SetState) {
 
         setText(
             "کد تایید ۵ رقمی را وارد کنید.",
@@ -116,7 +116,7 @@ class LoginActivityView(private val context: Context, private val onFinish: OnFi
                     text += item.text.toString()
 
                 if (text == "12345") {
-                    pref.saveState(true)
+                    pref.getState(true)
                     val intent = Intent(context, FirstActivity::class.java)
                     context.startActivity(intent)
                     onFinish.finished()

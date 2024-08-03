@@ -7,4 +7,8 @@
     <string name="document">مدارک</string>
     <string name="about_as">درباره ما</string>
     <string name="home">خانه</string>
+    <string name="wi_fi">اینترنت Wi_Fi</string>
+    <string name="internet_mobile">اینترنت موبایل</string>
+    <string name="dialog_connect_internet">به اینترنت متصل نیستید. برای استفاده از اپلیکیشن به انترنت متصل شوید.</string>
+    <string name="connect_to_internet">اتصال به اینترنت</string>
 </resources>

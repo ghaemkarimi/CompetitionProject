@@ -2,6 +2,8 @@ package com.ghaemkarimi.daneshjooyar.mvp.ext
 
 interface LifeCycle {
 
-    fun onCreate()
+    fun onCreate() {}
+
+    fun onStart() {}
 
 }
