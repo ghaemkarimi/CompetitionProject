@@ -1,30 +1,32 @@
 package com.ghaemkarimi.daneshjooyar.mvp.view
 
+import android.content.Context
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.customView.Item
 import com.ghaemkarimi.daneshjooyar.customView.Type
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityMainBinding
 import com.ghaemkarimi.daneshjooyar.mvp.ext.SetDialog
+import com.ghaemkarimi.daneshjooyar.mvp.ext.SetFragment
 import com.ghaemkarimi.daneshjooyar.ui.fragment.AboutUsFragment
 import com.ghaemkarimi.daneshjooyar.ui.fragment.DocumentFragment
 import com.ghaemkarimi.daneshjooyar.ui.fragment.HomeFragment
 
-class MainActivityView(private val activity: AppCompatActivity) {
+class MainActivityView(
+    private val context: Context,
+    private val setFragment: SetFragment
+) {
 
-    val binding = ActivityMainBinding.inflate(LayoutInflater.from(activity))
+    val binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
 
     fun setData() {
 
-        binding.support.setOnClickListener { SetDialog().setDialogSupport(activity) }
+        binding.support.setOnClickListener { SetDialog(context).setDialogSupport() }
 
     }
 
     fun fragmentManager() {
 
-        setFragment(HomeFragment())
+        setFragment.fragment(HomeFragment())
 
         binding.customNav.selectItem(object : Item {
 
@@ -38,20 +40,11 @@ class MainActivityView(private val activity: AppCompatActivity) {
 
                 }
 
-                setFragment(fragment)
+                setFragment.fragment(fragment)
 
             }
 
         })
-
-    }
-
-    private fun setFragment(fragment: Fragment) {
-
-        activity.supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment, fragment)
-            .commit()
 
     }
 

@@ -4,13 +4,19 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import com.ghaemkarimi.daneshjooyar.databinding.DialogSupportBinding
+import com.ghaemkarimi.daneshjooyar.remote.RetrofitService
+import com.ghaemkarimi.daneshjooyar.remote.ext.ErrorUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class SetDialog {
+class SetDialog(private val context: Context) {
 
-    fun setDialogSupport(context: Context) {
+    fun setDialogSupport() {
 
         val view = DialogSupportBinding.inflate(LayoutInflater.from(context))
 
@@ -24,16 +30,14 @@ class SetDialog {
 
         view.btnSend.setOnClickListener {
 
-            val title = view.edtTitle.text.toString()
-            val message = view.edtMessage.text.toString()
+            val title = view.edtTitle.text.toString().trim()
+            val message = view.edtMessage.text.toString().trim()
 
             if (title.isNotEmpty() && message.isNotEmpty()) {
 
                 val text = "عنوان: $title\n\nمتن پیام: َ$message"
 
-                Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-
-                //کارهای مربوط به ارسال پیام به تلگرام
+                sendMessageToSupport(text)
 
                 dialog.dismiss()
 
@@ -43,6 +47,45 @@ class SetDialog {
                 Toast.LENGTH_SHORT
             ).show()
 
+
+        }
+
+    }
+
+    private fun sendMessageToSupport(message: String) {
+
+        val service = RetrofitService.SendMessage
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            try {
+
+                val response = service.sendMassageToSupport(
+                    "IcWyottmislOA92wujR5oD3DqyWxHziSAJKEgVhn",
+                    message
+                )
+
+                if (response.isSuccessful) {
+                    launch(Dispatchers.Main) {
+                        Toast.makeText(
+                            context,
+                            "پیام به پشتیبانی ارسال شد",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    launch(Dispatchers.Main) {
+                        Toast.makeText(
+                            context,
+                            ErrorUtils.getError(response),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+            } catch (e: Exception) {
+                Log.e("SEND_MESSAGE_TO_SUPPORT", e.message.toString())
+            }
 
         }
 
