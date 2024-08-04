@@ -5,6 +5,7 @@
     android:layout_height="65dp"
     android:background="@drawable/back_edt_code"
     android:gravity="center"
+    android:layoutDirection="ltr"
     android:orientation="horizontal"
     android:visibility="gone">
 

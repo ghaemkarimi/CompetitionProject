@@ -7,6 +7,7 @@ import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.customView.Item
 import com.ghaemkarimi.daneshjooyar.customView.Type
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityMainBinding
+import com.ghaemkarimi.daneshjooyar.mvp.ext.SetDialog
 import com.ghaemkarimi.daneshjooyar.ui.fragment.AboutUsFragment
 import com.ghaemkarimi.daneshjooyar.ui.fragment.DocumentFragment
 import com.ghaemkarimi.daneshjooyar.ui.fragment.HomeFragment
@@ -14,6 +15,12 @@ import com.ghaemkarimi.daneshjooyar.ui.fragment.HomeFragment
 class MainActivityView(private val activity: AppCompatActivity) {
 
     val binding = ActivityMainBinding.inflate(LayoutInflater.from(activity))
+
+    fun setData() {
+
+        binding.support.setOnClickListener { SetDialog().setDialogSupport(activity) }
+
+    }
 
     fun fragmentManager() {
 

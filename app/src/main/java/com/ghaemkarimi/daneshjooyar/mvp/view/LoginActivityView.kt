@@ -55,6 +55,8 @@ class LoginActivityView(private val context: Context, private val onFinish: OnFi
 
         setListeners()
 
+        binding.numberEdt.textDirection = View.TEXT_DIRECTION_RTL
+
     }
 
     fun setTexts(state: Boolean = false, number: String = "", pref: SetState) {

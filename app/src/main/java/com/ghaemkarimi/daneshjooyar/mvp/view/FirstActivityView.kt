@@ -1,17 +1,14 @@
 package com.ghaemkarimi.daneshjooyar.mvp.view
 
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Handler
 import android.provider.Settings
-import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.WindowManager
+import android.view.View
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityFirstBinding
-import com.ghaemkarimi.daneshjooyar.databinding.DialogInternetCheckBinding
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
 import com.ghaemkarimi.daneshjooyar.ui.LoginActivity
 import com.ghaemkarimi.daneshjooyar.ui.MainActivity
@@ -71,36 +68,23 @@ class FirstActivityView(private val context: Context, private val onFinish: OnFi
 
     private fun dialog() {
 
-        val view = DialogInternetCheckBinding.inflate(LayoutInflater.from(context))
+        binding.dialog.visibility = View.VISIBLE
 
-        val dialog = Dialog(context)
-        dialog.setContentView(view.root)
-
-        val params = WindowManager.LayoutParams()
-        params.gravity = Gravity.CENTER
-        params.width = WindowManager.LayoutParams.MATCH_PARENT
-        params.height = WindowManager.LayoutParams.MATCH_PARENT
-
-        params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
-
-        params.dimAmount = 0.6f // میزان تاریک شدن پس‌زمینه
-
-        dialog.window?.attributes = params
-
-        dialog.setCancelable(false)
-        dialog.show()
-
-        view.wifiInternet.setOnClickListener {
-            val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
-            context.startActivity(intent)
-            dialog.dismiss()
+        binding.wifiInternet.setOnClickListener {
+            openSetting(Settings.ACTION_WIFI_SETTINGS)
         }
 
-        view.mobileInternet.setOnClickListener {
-            val intent = Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS)
-            context.startActivity(intent)
-            dialog.dismiss()
+        binding.mobileInternet.setOnClickListener {
+            openSetting(Settings.ACTION_NETWORK_OPERATOR_SETTINGS)
         }
+
+    }
+
+    private fun openSetting(setting: String) {
+
+        val intent = Intent(setting)
+        context.startActivity(intent)
+        binding.dialog.visibility = View.INVISIBLE
 
     }
 

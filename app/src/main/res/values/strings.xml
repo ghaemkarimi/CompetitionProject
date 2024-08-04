@@ -11,4 +11,8 @@
     <string name="internet_mobile">اینترنت موبایل</string>
     <string name="dialog_connect_internet">به اینترنت متصل نیستید. برای استفاده از اپلیکیشن به انترنت متصل شوید.</string>
     <string name="connect_to_internet">اتصال به اینترنت</string>
+    <string name="send">ارسال</string>
+    <string name="text_message">متن پیام…</string>
+    <string name="title">عنوان</string>
+    <string name="send_message_to_support">ارسال پیام به پشتیبانی</string>
 </resources>

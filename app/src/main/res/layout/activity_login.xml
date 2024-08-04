@@ -23,6 +23,7 @@
         android:layout_marginTop="94dp"
         android:layout_marginEnd="18dp"
         android:textColor="@color/black"
+        android:layoutDirection="ltr"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +38,7 @@
         android:layout_marginEnd="18dp"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title"
         tools:text="لطفا شماره موبایل خود را وارد کنید" />
@@ -46,8 +48,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
-        android:layoutDirection="rtl"
         app:errorIconTint="@null"
+        android:layoutDirection="rtl"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
@@ -61,8 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/phone_number"
-            android:inputType="number"
             android:textDirection="rtl"
+            android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -75,6 +77,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:visibility="invisible"
+        android:layoutDirection="ltr"
         app:layout_constraintStart_toStartOf="@+id/number_edt_layout"
         app:layout_constraintTop_toTopOf="@+id/number_edt_layout"
         app:srcCompat="@drawable/ic_clear" />
@@ -106,6 +109,7 @@
         android:id="@+id/false_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layoutDirection="ltr"
         android:background="#bbffffff"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/button"
@@ -119,6 +123,7 @@
         android:layout_margin="18dp"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
@@ -136,6 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
+        android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_request"
         app:srcCompat="@drawable/ic_edit" />
@@ -148,6 +154,7 @@
         android:text="@string/edit_number"
         android:textColor="#000080"
         android:textSize="16sp"
+        android:layoutDirection="ltr"
         app:layout_constraintBottom_toBottomOf="@+id/ic_edit"
         app:layout_constraintEnd_toStartOf="@+id/ic_edit"
         app:layout_constraintTop_toTopOf="@+id/ic_edit" />
@@ -159,6 +166,7 @@
         android:textSize="16sp"
         android:textColor="@color/red"
         android:visibility="gone"
+        android:layoutDirection="ltr"
         android:text="@string/text_error_code"
         app:layout_constraintEnd_toEndOf="@+id/edit_texts"
         app:layout_constraintTop_toBottomOf="@+id/edit_texts" />

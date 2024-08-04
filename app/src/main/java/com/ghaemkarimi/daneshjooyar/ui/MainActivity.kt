@@ -2,7 +2,6 @@ package com.ghaemkarimi.daneshjooyar.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ghaemkarimi.daneshjooyar.mvp.model.MainActivityModel
 import com.ghaemkarimi.daneshjooyar.mvp.presenter.MainActivityPresenter
 import com.ghaemkarimi.daneshjooyar.mvp.view.MainActivityView
 
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         val view = MainActivityView(this)
         setContentView(view.binding.root)
 
-        val presenter = MainActivityPresenter(view, MainActivityModel())
+        val presenter = MainActivityPresenter(view)
         presenter.onCreate()
 
     }

@@ -39,19 +39,23 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
+        android:layoutDirection="ltr"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/support"
             app:srcCompat="@drawable/ic_support"
+            android:padding="4dp"
             android:layout_width="35dp"
             android:layout_height="35dp"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             app:srcCompat="@drawable/ic_daneshjooyar"
             android:layout_gravity="center"
+            android:padding="4dp"
             android:layout_width="60dp"
             android:layout_height="60dp"/>
 
@@ -59,9 +63,9 @@
             app:srcCompat="@drawable/ic_more"
             android:layout_gravity="end"
             android:layout_margin="12dp"
+            android:padding="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -69,6 +73,7 @@
         android:id="@+id/customNav"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layoutDirection="ltr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
