@@ -5,13 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ghaemkarimi.daneshjooyar.R
-import com.ghaemkarimi.daneshjooyar.adapter.model.HomeModel
+import com.ghaemkarimi.daneshjooyar.adapter.model.HomeModelHorizontal
 import com.ghaemkarimi.daneshjooyar.databinding.ItemRecyclerHomeHorizontalBinding
+import com.ghaemkarimi.daneshjooyar.mvp.ext.SetSelection
 
 class AdapterRecyclerHomeHorizontal(
     private val context: Context,
-    private val allData: ArrayList<HomeModel>
+    private val allData: ArrayList<HomeModelHorizontal>,
+    private val setSelection: SetSelection
 ) : RecyclerView.Adapter<AdapterRecyclerHomeHorizontal.ViewHolder>() {
+
+    init {
+        setSelection.setItemCount(1)
+    }
 
     private var selected = 0
 
@@ -21,12 +27,13 @@ class AdapterRecyclerHomeHorizontal(
 
         val bind = binding
 
-        fun setData(data: HomeModel) {
+        fun setData(data: HomeModelHorizontal) {
 
             binding.img.setImageResource(data.image)
             binding.txt.text = data.text
 
             binding.root.setOnClickListener {
+                setSelection.setItemCount(data.id)
                 notifyItemChanged(selected)
                 selected = data.id - 1
                 notifyItemChanged(selected)

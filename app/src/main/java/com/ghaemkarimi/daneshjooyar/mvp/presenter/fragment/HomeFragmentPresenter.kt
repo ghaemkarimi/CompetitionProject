@@ -19,7 +19,14 @@ class HomeFragmentPresenter(
 
     private fun setData() {
 
-        view.setRecyclerHorizontal(model.dataRecyclerHorizontal())
+        view.setRecyclerHorizontal(
+            model.dataRecyclerHorizontal(),
+            object : SetSelection {
+                override fun setItemCount(foreignKey: Int) {
+                    view.setRecyclerVertical(foreignKey, model.dataRecyclerVertical())
+                }
+            }
+        )
 
     }
 

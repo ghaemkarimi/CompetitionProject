@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/img_splash" />
+        android:src="@drawable/image_splash" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/dialog"
@@ -81,7 +81,7 @@
         app:layout_constraintBottom_toTopOf="@+id/dialog_connect_internet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_no_internet" />
+        app:srcCompat="@drawable/image_no_internet" />
 
     <TextView
         android:id="@+id/connect_to_internet"
