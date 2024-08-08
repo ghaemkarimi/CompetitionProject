@@ -1,11 +1,13 @@
 package com.ghaemkarimi.daneshjooyar.adapter.recyclers
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ghaemkarimi.daneshjooyar.adapter.model.HomeModelVertical
 import com.ghaemkarimi.daneshjooyar.databinding.ItemRecyclerHomeVerticalBinding
+import com.ghaemkarimi.daneshjooyar.ui.CourseActivity
 
 class AdapterRecyclerHomeVertical(
     private val context: Context,
@@ -22,7 +24,8 @@ class AdapterRecyclerHomeVertical(
             binding.txt.text = data.text
 
             binding.root.setOnClickListener {
-                //startAct
+                val intent = Intent(context, CourseActivity::class.java)
+                context.startActivity(intent)
             }
 
         }

@@ -15,4 +15,8 @@
     <string name="text_message">متن پیام…</string>
     <string name="title">عنوان</string>
     <string name="send_message_to_support">ارسال پیام به پشتیبانی</string>
+    <string name="instagram">اینستاگرام</string>
+    <string name="youtube">یوتیوب</string>
+    <string name="attributes">ویژگی ها</string>
+    <string name="social_media">شبکه های اجتماعی</string>
 </resources>

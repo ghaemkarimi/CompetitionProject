@@ -1,7 +1,5 @@
 package com.ghaemkarimi.daneshjooyar.adapter.model
 
-import androidx.room.ForeignKey
-
 data class HomeModelHorizontal(
     val id: Int,
     val text: String,
