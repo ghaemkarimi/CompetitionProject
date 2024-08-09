@@ -11,6 +11,13 @@ class CourseActivityPresenter(
 
     override fun onCreate() {
 
+        setData()
+
+    }
+
+    fun setData() {
+
+        view.setRecycler(model.dataRecycler())
         view.setData()
 
     }

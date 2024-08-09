@@ -11,6 +11,12 @@ class AboutUsFragmentPresenter(
 
     override fun onCreate() {
 
+        setData()
+
+    }
+
+    fun setData() {
+
         view.setRecycler(model.dataRecycler())
         view.setIntents()
 
