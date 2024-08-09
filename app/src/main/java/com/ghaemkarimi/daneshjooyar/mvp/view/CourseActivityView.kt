@@ -16,6 +16,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
     val binding = ActivityCourseBinding.inflate(LayoutInflater.from(context))
     private val setDialog = SetDialog(context)
+    private val backBtn = R.drawable.inner_shadow
 
     fun setData() {
 
@@ -23,7 +24,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             binding.lineInformation.visibility = View.VISIBLE
             binding.lineVideos.visibility = View.INVISIBLE
             binding.scrollView.visibility = View.VISIBLE
-            binding.backInformation.setBackgroundResource(R.drawable.inner_shadow)
+            binding.backInformation.setBackgroundResource(backBtn)
             binding.backVideos.background = null
         }
 
@@ -31,11 +32,11 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             binding.lineInformation.visibility = View.INVISIBLE
             binding.lineVideos.visibility = View.VISIBLE
             binding.scrollView.visibility = View.INVISIBLE
-            binding.backVideos.setBackgroundResource(R.drawable.inner_shadow)
+            binding.backVideos.setBackgroundResource(backBtn)
             binding.backInformation.background = null
         }
 
-        binding.more.setOnClickListener {
+        binding.arrowBack.setOnClickListener {
             onFinish.finished()
         }
 

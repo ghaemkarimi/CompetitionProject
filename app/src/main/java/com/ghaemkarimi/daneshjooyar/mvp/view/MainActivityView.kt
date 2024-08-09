@@ -12,15 +12,19 @@ import com.ghaemkarimi.daneshjooyar.ui.fragment.DocumentFragment
 import com.ghaemkarimi.daneshjooyar.ui.fragment.HomeFragment
 
 class MainActivityView(
-    private val context: Context,
+    context: Context,
     private val setFragment: SetFragment
 ) {
 
     val binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
+    private val setDialog = SetDialog(context)
+    private val document = DocumentFragment()
+    private val aboutUs = AboutUsFragment()
+    private val home = HomeFragment()
 
     fun setData() {
 
-        binding.support.setOnClickListener { SetDialog(context).setDialogSupport() }
+        binding.support.setOnClickListener { setDialog.setDialogSupport() }
 
     }
 
@@ -34,9 +38,9 @@ class MainActivityView(
 
                 val fragment = when (type) {
 
-                    Type.DOCUMENT -> DocumentFragment()
-                    Type.ABOUT -> AboutUsFragment()
-                    Type.HOME -> HomeFragment()
+                    Type.DOCUMENT -> document
+                    Type.ABOUT -> aboutUs
+                    Type.HOME -> home
 
                 }
 
