@@ -27,45 +27,48 @@ class AboutUsFragmentView(private val context: Context) {
 
     }
 
+    private lateinit var instagramIntent: Intent
+    private lateinit var youtubeIntent: Intent
+
     fun setIntents() {
 
+        instagramIntent = setIntent(
+            "https://www.instagram.com/lrn.ir?igsh=dDFndWZpMzl1dmhr",
+            "com.instagram.android"
+        )
+
+        youtubeIntent = setIntent(
+            "https://www.youtube.com/@alireza-ahmadi",
+            "com.youtube.android"
+        )
+
         binding.btnInstagram.setOnClickListener {
-
-            val address = "https://www.instagram.com/lrn.ir?igsh=dDFndWZpMzl1dmhr"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(address))
-            intent.setPackage("com.instagram.android")
-
-            try {
-
-                context.startActivity(intent)
-
-            } catch (e: ActivityNotFoundException) {
-
-                val chooser = Intent.createChooser(intent, "بازکردن با")
-                context.startActivity(chooser)
-
-            }
-
+            startApp(instagramIntent)
         }
 
         binding.btnYoutube.setOnClickListener {
-
-            val address = "https://www.youtube.com/@alireza-ahmadi"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(address))
-            intent.setPackage("com.youtube.android")
-
-            try {
-
-                context.startActivity(intent)
-
-            } catch (e: ActivityNotFoundException) {
-
-                val chooser = Intent.createChooser(intent, "بازکردن با")
-                context.startActivity(chooser)
-
-            }
-
+            startApp(youtubeIntent)
         }
+
+    }
+
+    private fun startApp(intent: Intent) {
+
+        try {
+            context.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            val chooser = Intent.createChooser(intent, "بازکردن با")
+            context.startActivity(chooser)
+        }
+
+    }
+
+    private fun setIntent(address: String, packageName: String): Intent {
+
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(address))
+        intent.setPackage(packageName)
+
+        return intent
 
     }
 

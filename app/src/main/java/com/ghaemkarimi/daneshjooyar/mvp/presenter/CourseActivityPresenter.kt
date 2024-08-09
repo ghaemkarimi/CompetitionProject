@@ -11,6 +11,8 @@ class CourseActivityPresenter(
 
     override fun onCreate() {
 
+        view.setData()
+
     }
 
 }
