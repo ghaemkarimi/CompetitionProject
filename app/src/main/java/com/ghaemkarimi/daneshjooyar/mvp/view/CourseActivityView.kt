@@ -24,6 +24,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             binding.lineInformation.visibility = View.VISIBLE
             binding.lineVideos.visibility = View.INVISIBLE
             binding.scrollView.visibility = View.VISIBLE
+            binding.recyclerVideos.visibility = View.INVISIBLE
             binding.backInformation.setBackgroundResource(backBtn)
             binding.backVideos.background = null
         }
@@ -32,6 +33,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             binding.lineInformation.visibility = View.INVISIBLE
             binding.lineVideos.visibility = View.VISIBLE
             binding.scrollView.visibility = View.INVISIBLE
+            binding.recyclerVideos.visibility = View.VISIBLE
             binding.backVideos.setBackgroundResource(backBtn)
             binding.backInformation.background = null
         }

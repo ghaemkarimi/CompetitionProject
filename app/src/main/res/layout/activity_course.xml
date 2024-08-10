@@ -161,6 +161,7 @@
         app:layout_constraintTop_toTopOf="@+id/back_information" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/videos"
@@ -176,6 +177,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layoutDirection="rtl"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -216,5 +218,32 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_end_course"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_information"
+        app:srcCompat="@drawable/image_end_course" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="invisible"
+        android:id="@+id/recycler_videos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_end_course"
+        tools:listitem="@layout/item_recycler_videos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
