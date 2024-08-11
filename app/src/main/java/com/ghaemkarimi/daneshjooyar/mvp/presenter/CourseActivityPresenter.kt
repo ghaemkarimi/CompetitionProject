@@ -17,7 +17,7 @@ class CourseActivityPresenter(
 
     fun setData() {
 
-        view.setRecycler(model.dataRecycler())
+        view.setRecyclerAbout(model.dataRecyclerAbout())
         view.setData()
 
     }

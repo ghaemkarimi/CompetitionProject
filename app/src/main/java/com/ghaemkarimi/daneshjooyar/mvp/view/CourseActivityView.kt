@@ -3,7 +3,7 @@ package com.ghaemkarimi.daneshjooyar.mvp.view
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.adapter.model.AboutModel
@@ -22,17 +22,18 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
         binding.backInformation.setOnClickListener {
             binding.lineInformation.visibility = View.VISIBLE
-            binding.lineVideos.visibility = View.INVISIBLE
             binding.scrollView.visibility = View.VISIBLE
+            binding.lineVideos.visibility = View.INVISIBLE
             binding.recyclerVideos.visibility = View.INVISIBLE
             binding.backInformation.setBackgroundResource(backBtn)
             binding.backVideos.background = null
+            binding.imgEndCourse.visibility = View.GONE
         }
 
         binding.backVideos.setOnClickListener {
             binding.lineInformation.visibility = View.INVISIBLE
-            binding.lineVideos.visibility = View.VISIBLE
             binding.scrollView.visibility = View.INVISIBLE
+            binding.lineVideos.visibility = View.VISIBLE
             binding.recyclerVideos.visibility = View.VISIBLE
             binding.backVideos.setBackgroundResource(backBtn)
             binding.backInformation.background = null
@@ -48,15 +49,15 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
     }
 
-    fun setRecycler(data: ArrayList<AboutModel>) {
+    fun setRecyclerAbout(data: ArrayList<AboutModel>) {
 
         val adapter = AdapterRecyclerAboutUs(context, data)
 
-        binding.recycler.layoutManager = GridLayoutManager(
-            context, 2, RecyclerView.VERTICAL, false
+        binding.recyclerAboutUs.layoutManager = LinearLayoutManager(
+            context, RecyclerView.VERTICAL, false
         )
 
-        binding.recycler.adapter = adapter
+        binding.recyclerAboutUs.adapter = adapter
 
     }
 

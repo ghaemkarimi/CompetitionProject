@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ghaemkarimi.daneshjooyar.adapter.model.AboutModel
 import com.ghaemkarimi.daneshjooyar.adapter.recyclers.AdapterRecyclerAboutUs
@@ -19,8 +19,8 @@ class AboutUsFragmentView(private val context: Context) {
 
         val adapter = AdapterRecyclerAboutUs(context, data)
 
-        binding.recycler.layoutManager = GridLayoutManager(
-            context, 2, RecyclerView.VERTICAL, false
+        binding.recycler.layoutManager = LinearLayoutManager(
+            context, RecyclerView.VERTICAL, false
         )
 
         binding.recycler.adapter = adapter
@@ -39,7 +39,7 @@ class AboutUsFragmentView(private val context: Context) {
 
         youtubeIntent = setIntent(
             "https://www.youtube.com/@alireza-ahmadi",
-            "com.youtube.android"
+            "com.google.android.youtube"
         )
 
         binding.btnInstagram.setOnClickListener {
