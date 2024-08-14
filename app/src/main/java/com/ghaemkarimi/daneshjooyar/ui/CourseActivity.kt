@@ -9,18 +9,30 @@ import com.ghaemkarimi.daneshjooyar.mvp.view.CourseActivityView
 
 class CourseActivity : AppCompatActivity(), OnFinish {
 
+    private lateinit var presenter: CourseActivityPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val view = CourseActivityView(this, this)
         setContentView(view.binding.root)
 
-        val presenter = CourseActivityPresenter(view, CourseActivityModel())
+        presenter = CourseActivityPresenter(view, CourseActivityModel(this))
         presenter.onCreate()
 
     }
 
     override fun finished() {
         finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter.onStart()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
 }

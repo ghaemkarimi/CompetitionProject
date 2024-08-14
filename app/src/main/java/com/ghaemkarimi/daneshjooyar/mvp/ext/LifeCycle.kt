@@ -6,4 +6,6 @@ interface LifeCycle {
 
     fun onStart() {}
 
+    fun onDestroy() {}
+
 }

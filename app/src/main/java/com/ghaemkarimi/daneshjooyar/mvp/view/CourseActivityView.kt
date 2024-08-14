@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.adapter.model.AboutModel
+import com.ghaemkarimi.daneshjooyar.adapter.model.VideoModel
 import com.ghaemkarimi.daneshjooyar.adapter.recyclers.AdapterRecyclerAboutUs
+import com.ghaemkarimi.daneshjooyar.adapter.recyclers.AdapterRecyclerVideos
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityCourseBinding
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
 import com.ghaemkarimi.daneshjooyar.mvp.ext.SetDialog
@@ -30,15 +32,6 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             binding.imgEndCourse.visibility = View.GONE
         }
 
-        binding.backVideos.setOnClickListener {
-            binding.lineInformation.visibility = View.INVISIBLE
-            binding.scrollView.visibility = View.INVISIBLE
-            binding.lineVideos.visibility = View.VISIBLE
-            binding.recyclerVideos.visibility = View.VISIBLE
-            binding.backVideos.setBackgroundResource(backBtn)
-            binding.backInformation.background = null
-        }
-
         binding.arrowBack.setOnClickListener {
             onFinish.finished()
         }
@@ -58,6 +51,40 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
         )
 
         binding.recyclerAboutUs.adapter = adapter
+
+    }
+
+    fun setRecyclerVideo(data: List<VideoModel>) {
+
+        var endCourse = false
+        val adapter = AdapterRecyclerVideos(context, data)
+
+        binding.recyclerVideos.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+        binding.recyclerVideos.adapter = adapter
+
+        data.forEach {
+            if (!it.seen) {
+                endCourse = false
+                return
+            }
+            else
+                endCourse = true
+        }
+
+        if (endCourse)
+            binding.imgEndCourse.visibility = View.VISIBLE
+
+        binding.backVideos.setOnClickListener {
+            binding.lineInformation.visibility = View.INVISIBLE
+            binding.scrollView.visibility = View.INVISIBLE
+            binding.lineVideos.visibility = View.VISIBLE
+            binding.recyclerVideos.visibility = View.VISIBLE
+            binding.backVideos.setBackgroundResource(backBtn)
+            binding.backInformation.background = null
+            binding.imgEndCourse.visibility = View.VISIBLE
+        }
 
     }
 
