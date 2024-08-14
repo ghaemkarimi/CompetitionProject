@@ -23,4 +23,5 @@
     <string name="videos">ویدئو ها</string>
     <string name="who_do_we_learn_from">از کی یاد میگیریم؟</string>
     <string name="progress_percentage">درصد پیشرفت</string>
+    <string name="_100">/100%</string>
 </resources>

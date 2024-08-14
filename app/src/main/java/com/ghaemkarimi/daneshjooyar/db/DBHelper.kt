@@ -4,13 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.ghaemkarimi.daneshjooyar.db.dao.DaoSeenSeconds
 import com.ghaemkarimi.daneshjooyar.db.dao.DaoVideos
-import com.ghaemkarimi.daneshjooyar.db.model.DaoVideosModel
+import com.ghaemkarimi.daneshjooyar.db.model.DaoSeenSecondsModel
+import com.ghaemkarimi.daneshjooyar.db.model.DaoVideoModel
 
-@Database(entities = [DaoVideosModel::class], version = DBHelper.DBVersion)
+@Database(
+    entities = [DaoVideoModel::class, DaoSeenSecondsModel::class],
+    version = DBHelper.DBVersion
+)
 abstract class DBHelper : RoomDatabase() {
 
     abstract fun videos(): DaoVideos
+    abstract fun seenSeconds(): DaoSeenSeconds
 
     companion object {
 
@@ -18,6 +24,7 @@ abstract class DBHelper : RoomDatabase() {
         const val DBVersion = 1
 
         const val TABLE_VIDEOS = "videos"
+        const val TABLE_SEEN_SECONDS = "seenSeconds"
 
         private var database: DBHelper? = null
 

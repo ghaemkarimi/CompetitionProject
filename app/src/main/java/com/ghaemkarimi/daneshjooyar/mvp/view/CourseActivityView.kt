@@ -19,6 +19,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
     val binding = ActivityCourseBinding.inflate(LayoutInflater.from(context))
     private val setDialog = SetDialog(context)
     private val backBtn = R.drawable.inner_shadow
+    private var endCourse = false
 
     fun setData() {
 
@@ -30,6 +31,17 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             binding.backInformation.setBackgroundResource(backBtn)
             binding.backVideos.background = null
             binding.imgEndCourse.visibility = View.GONE
+        }
+
+        binding.backVideos.setOnClickListener {
+            binding.lineInformation.visibility = View.INVISIBLE
+            binding.scrollView.visibility = View.INVISIBLE
+            binding.lineVideos.visibility = View.VISIBLE
+            binding.recyclerVideos.visibility = View.VISIBLE
+            binding.backVideos.setBackgroundResource(backBtn)
+            binding.backInformation.background = null
+            if (endCourse)
+                binding.imgEndCourse.visibility = View.VISIBLE
         }
 
         binding.arrowBack.setOnClickListener {
@@ -56,7 +68,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
     fun setRecyclerVideo(data: List<VideoModel>) {
 
-        var endCourse = false
+        endCourse = false
         val adapter = AdapterRecyclerVideos(context, data)
 
         binding.recyclerVideos.layoutManager =
@@ -68,23 +80,12 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
             if (!it.seen) {
                 endCourse = false
                 return
-            }
-            else
+            } else
                 endCourse = true
         }
 
         if (endCourse)
             binding.imgEndCourse.visibility = View.VISIBLE
-
-        binding.backVideos.setOnClickListener {
-            binding.lineInformation.visibility = View.INVISIBLE
-            binding.scrollView.visibility = View.INVISIBLE
-            binding.lineVideos.visibility = View.VISIBLE
-            binding.recyclerVideos.visibility = View.VISIBLE
-            binding.backVideos.setBackgroundResource(backBtn)
-            binding.backInformation.background = null
-            binding.imgEndCourse.visibility = View.VISIBLE
-        }
 
     }
 

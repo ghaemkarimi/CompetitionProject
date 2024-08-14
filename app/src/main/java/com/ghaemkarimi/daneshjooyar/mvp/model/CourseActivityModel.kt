@@ -5,7 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.adapter.model.AboutModel
 import com.ghaemkarimi.daneshjooyar.db.DBHelper
-import com.ghaemkarimi.daneshjooyar.db.model.DaoVideosModel
+import com.ghaemkarimi.daneshjooyar.db.model.DaoVideoModel
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnBindData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +46,7 @@ class CourseActivityModel(context: Context) {
 
             launch(Dispatchers.Main) {
 
-                videos.collect{
+                videos.collect {
                     onBindData.getVideos(it)
                 }
 
@@ -60,9 +60,13 @@ class CourseActivityModel(context: Context) {
 
         val stateSave = pref.getBoolean("save", false)
 
-        if (stateSave) {
+        if (!stateSave) {
 
-            dataRecyclerVideos().forEach { db.videos().saveVideo(it) }
+            CoroutineScope(Dispatchers.IO).launch {
+
+                dataRecyclerVideos().forEach { db.videos().saveVideo(it) }
+
+            }
 
             val editor = pref.edit()
             editor.putBoolean("save", true)
@@ -74,40 +78,38 @@ class CourseActivityModel(context: Context) {
 
     private fun dataRecyclerVideos() =
         arrayListOf(
-            DaoVideosModel(
-                title = "برسی حالت ثابت و مطلق در تنظیمات پیشرفته ویجت ها",
+            DaoVideoModel(
+                title = "1.برسی حالت ثابت و مطلق در تنظیمات پیشرفته ویجت ها",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
                 uri = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/Business/S05-Elementor-free-and-pro/S05-Part14-static-and-dinamic.mp4",
-                seen = false,
-                amountSeen = arrayListOf()
+                seen = false
             ),
-            DaoVideosModel(
-                title = "",
-                description = "",
+            DaoVideoModel(
+                title = "2.آموزش گزینه حاشیه در تنظیمات پیشرفته ویجت ها",
+                description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
+                img = R.drawable.img_u2,
+                uri = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/Business/S05-Elementor-free-and-pro/S05-Part18-strok.mp4",
+                seen = false
+            ),
+            DaoVideoModel(
+                title = "3.آموزش کار با نقشه گوگل و آیکن ها در المنتور",
+                description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
                 uri = "",
-                seen = false,
-                amountSeen = arrayListOf()
+                seen = false
             ),
-            DaoVideosModel(
-                title = "",
-                description = "",
+            DaoVideoModel(
+                title = "4.برگزاری آزمون جهت سنجش عملکرد کاربران",
+                description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
                 uri = "",
-                seen = false,
-                amountSeen = arrayListOf()
-            ),
-            DaoVideosModel(
-                title = "",
-                description = "",
-                img = R.drawable.img_u2,
-                uri = "",
-                seen = false,
-                amountSeen = arrayListOf()
+                seen = false
             ),
         )
 
-    fun onDestroy() { db.close() }
+    fun onDestroy() {
+        db.close()
+    }
 
 }
