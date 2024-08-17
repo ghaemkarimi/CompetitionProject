@@ -53,7 +53,7 @@ class CustomNav(
 
     }
 
-    private fun home() {
+    fun home() {
 
         setIcon(binding.icHome, R.drawable.ic_home_active)
         setTextColor(binding.txtHome)

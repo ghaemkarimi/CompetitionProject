@@ -13,6 +13,7 @@ import com.ghaemkarimi.daneshjooyar.adapter.recyclers.AdapterRecyclerVideos
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityCourseBinding
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
 import com.ghaemkarimi.daneshjooyar.mvp.ext.SetDialog
+import com.ghaemkarimi.daneshjooyar.mvp.ext.SetState
 
 class CourseActivityView(private val context: Context, private val onFinish: OnFinish) {
 
@@ -66,7 +67,7 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
     }
 
-    fun setRecyclerVideo(data: List<VideoModel>) {
+    fun setRecyclerVideo(data: List<VideoModel>, setState: SetState) {
 
         endCourse = false
         val adapter = AdapterRecyclerVideos(context, data)
@@ -84,8 +85,11 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
                 endCourse = true
         }
 
-        if (endCourse)
+        if (endCourse) {
             binding.imgEndCourse.visibility = View.VISIBLE
+            setState.getState(true)
+        }
+
 
     }
 

@@ -24,4 +24,9 @@
     <string name="who_do_we_learn_from">از کی یاد میگیریم؟</string>
     <string name="progress_percentage">درصد پیشرفت</string>
     <string name="_100">/100%</string>
+    <string name="next">قسمت بعدی</string>
+    <string name="preview">قسمت قبلی</string>
+    <string name="guide">راهنما</string>
+    <string name="text_not_end_course">شما هنوز مدرکی ندارید \n چون دوره ای را به پایان نرسانده اید.</string>
+    <string name="showCourses">مشاهده دوره ها</string>
 </resources>

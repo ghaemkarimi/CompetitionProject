@@ -17,8 +17,9 @@ class VideoActivity : AppCompatActivity(), OnFinish {
         setContentView(view.binding.root)
 
         val id = intent.getIntExtra("id", 0)
+        val videoCount = intent.getIntExtra("videoCount", 0)
 
-        presenter = VideoActivityPresenter(view, VideoActivityModel(this), id)
+        presenter = VideoActivityPresenter(view, VideoActivityModel(this), id, videoCount)
         presenter.onCreate()
 
     }

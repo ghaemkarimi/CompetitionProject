@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.CourseActivity">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/card_view"
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:layout_margin="18dp"
@@ -43,7 +44,7 @@
         android:layoutDirection="ltr"
         app:layout_constraintEnd_toStartOf="@+id/back_information"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
     <View
         android:id="@+id/line_videos"
@@ -137,7 +138,7 @@
         android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back_videos"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
     <View
         android:id="@+id/line_information"
@@ -237,6 +238,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:visibility="invisible"
+        android:paddingBottom="12dp"
         android:id="@+id/recycler_videos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -14,11 +14,11 @@ import com.ghaemkarimi.daneshjooyar.ui.fragment.HomeFragment
 class MainActivityView(
     context: Context,
     private val setFragment: SetFragment
-) {
+): Item {
 
     val binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
     private val setDialog = SetDialog(context)
-    private val document = DocumentFragment()
+    private val document = DocumentFragment(this)
     private val aboutUs = AboutUsFragment()
     private val home = HomeFragment()
 
@@ -50,6 +50,11 @@ class MainActivityView(
 
         })
 
+    }
+
+    override fun setFragment(type: Type) {
+        setFragment.fragment(home)
+        binding.customNav.home()
     }
 
 }
