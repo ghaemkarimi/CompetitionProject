@@ -33,4 +33,22 @@ class VideoActivity : AppCompatActivity(), OnFinish {
         presenter.onDestroy()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val (currentPosition, statePlay) = presenter.saveStateVideo()
+        outState.putInt("position", currentPosition)
+        outState.putBoolean("isPlay", statePlay)
+
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        val currentPosition = savedInstanceState.getInt("position")
+        val isPlaying = savedInstanceState.getBoolean("isPlay")
+        presenter.getStateVideo(currentPosition, isPlaying)
+
+    }
+
 }

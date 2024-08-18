@@ -21,19 +21,25 @@ class VideoActivityPresenter(
         model.onDestroy()
     }
 
+    fun saveStateVideo(): Pair<Int, Boolean> = view.saveStateVideo()
+
+    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
+        view.getStateVideo(currentPosition, isPlaying)
+    }
+
     private fun setData() {
 
         view.setData(idVideo, object : OnBindData {
             override fun setVideo(id: Int) {
-
                 model.getVideo(id, object : OnBindData {
                     override fun getVideo(video: DaoVideoModel, seconds: List<Int>) {
-
-                        view.setVideoData(video, seconds, videoCount)
-
+                        view.setVideoData(video, seconds, videoCount, object : OnBindData {
+                            override fun updateDuration(duration: Int, idVideo: Int) {
+                                model.updateDuration(duration, idVideo)
+                            }
+                        })
                     }
                 })
-
             }
         })
 

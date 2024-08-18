@@ -94,29 +94,33 @@ class CourseActivityModel(context: Context) {
                 title = "1. برسی حالت ثابت و مطلق در تنظیمات پیشرفته ویجت ها",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
-                uri = "https://drive.usercontent.google.com/download?id=1UL5mN-Az0Fvmn0F8Ldci9nPS4vYZT7lX&export=download&authuser=0&confirm=t&uuid=cea926d1-e622-4757-a5aa-b097ee4d5ea6&at=APZUnTVdeg40sW4FkzEubsCnHI_4:1723875720876",
-                seen = false
+                uri = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/Business/S05-Elementor-free-and-pro/S05-Part14-static-and-dinamic.mp4",
+                seen = false,
+                duration = 0
             ),
             DaoVideoModel(
                 title = "2. آموزش گزینه حاشیه در تنظیمات پیشرفته ویجت ها",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
                 uri = "https://drive.usercontent.google.com/download?id=1Wl5nmwZ2jbK9kBUXTbOun4kJZrz86F_4&export=download&authuser=0&confirm=t&uuid=9602cfe0-77f9-4fea-9282-c4ba18c421d7&at=APZUnTXP6kytYOXYxbsmOJk7RhmU:1723875869647",
-                seen = false
+                seen = false,
+                duration = 0
             ),
             DaoVideoModel(
                 title = "3. آموزش کار با نقشه گوگل و آیکن ها در المنتور",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
                 uri = "https://drive.usercontent.google.com/download?id=1GuN8hg99GMAETZVA30PXcC6HtZmahNXz&export=download&authuser=0&confirm=t&uuid=fa464b19-5e44-4375-86f4-e733261f84a4&at=APZUnTWSr49v9oq4ISzqt5eQMZBC:1723875910375",
-                seen = false
+                seen = false,
+                duration = 0
             ),
             DaoVideoModel(
                 title = "4. برگزاری آزمون جهت سنجش عملکرد کاربران",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
-                uri = "https://drive.usercontent.google.com/download?id=1zU3sbuEHG4VR9NYFW7wKRyvjoLBSttmi&export=download&authuser=0&confirm=t&uuid=07d9159f-141b-475b-aae7-fd77e7799607&at=APZUnTW8p4r9CNnt20BbYciIWp8h:1723875975303",
-                seen = false
+                uri = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/Business/S05-Elementor-free-and-pro/S05-Part49-quiz.mp4",
+                seen = false,
+                duration = 0
             ),
         )
 

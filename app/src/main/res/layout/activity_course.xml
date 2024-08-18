@@ -57,34 +57,6 @@
         app:layout_constraintTop_toBottomOf="@+id/back_videos" />
 
     <View
-        android:id="@+id/shadow"
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:background="@drawable/drop_shadow_light"
-        android:rotation="180"
-        app:layout_constraintEnd_toEndOf="@+id/back_information"
-        app:layout_constraintStart_toStartOf="@+id/back_videos"
-        app:layout_constraintTop_toBottomOf="@+id/line_information" />
-
-    <View
-        android:layout_width="15dp"
-        android:layout_height="0dp"
-        android:background="@drawable/helper_shadow"
-        app:layout_constraintBottom_toBottomOf="@+id/shadow"
-        app:layout_constraintTop_toTopOf="@+id/shadow"
-        app:layout_constraintStart_toStartOf="@+id/shadow" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="15dp"
-        android:layout_height="0dp"
-        android:background="@drawable/helper_shadow"
-        android:rotation="180"
-        app:layout_constraintBottom_toBottomOf="@+id/shadow"
-        app:layout_constraintEnd_toEndOf="@+id/shadow"
-        app:layout_constraintTop_toTopOf="@+id/shadow" />
-
-    <View
         android:id="@+id/shadow_1"
         android:layout_width="0dp"
         android:layout_height="4dp"
@@ -238,7 +210,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:visibility="invisible"
-        android:paddingBottom="12dp"
         android:id="@+id/recycler_videos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -246,5 +217,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_end_course"
         tools:listitem="@layout/item_recycler_videos" />
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:background="@drawable/drop_shadow_light"
+        android:rotation="180"
+        app:layout_constraintEnd_toEndOf="@+id/back_information"
+        app:layout_constraintStart_toStartOf="@+id/back_videos"
+        app:layout_constraintTop_toBottomOf="@+id/line_information" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="0dp"
+        android:background="@drawable/helper_shadow"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow"
+        app:layout_constraintTop_toTopOf="@+id/shadow"
+        app:layout_constraintStart_toStartOf="@+id/shadow" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="15dp"
+        android:layout_height="0dp"
+        android:background="@drawable/helper_shadow"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow"
+        app:layout_constraintEnd_toEndOf="@+id/shadow"
+        app:layout_constraintTop_toTopOf="@+id/shadow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

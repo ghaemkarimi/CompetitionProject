@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.ghaemkarimi.daneshjooyar.db.DBHelper
+import java.time.Duration
 
 @Entity(tableName = DBHelper.TABLE_VIDEOS)
 data class DaoVideoModel(
@@ -17,7 +18,8 @@ data class DaoVideoModel(
     val description: String,
     val img: Int,
     val uri: String,
-    val seen: Boolean
+    val seen: Boolean,
+    val duration: Int
 
 )
 

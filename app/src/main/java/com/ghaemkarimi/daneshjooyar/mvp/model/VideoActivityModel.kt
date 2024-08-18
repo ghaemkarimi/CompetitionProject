@@ -7,6 +7,7 @@ import com.ghaemkarimi.daneshjooyar.mvp.ext.OnBindData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.time.Duration
 
 class VideoActivityModel(context: Context) {
 
@@ -24,6 +25,16 @@ class VideoActivityModel(context: Context) {
                 onBindData.getVideo(video, seconds)
 
             }
+
+        }
+
+    }
+
+    fun updateDuration(duration: Int, idVideo: Int) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            db.videos().updateDuration(duration, idVideo)
 
         }
 

@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.VideoActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:background="@color/white"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
         android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,9 +74,21 @@
         android:layout_height="240dp"
         android:layout_margin="18dp"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@id/txt_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_title" />
+
+    <ProgressBar
+        android:id="@+id/progress_video"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/lightBlue"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/video"
+        app:layout_constraintEnd_toEndOf="@+id/video"
+        app:layout_constraintStart_toStartOf="@+id/video"
+        app:layout_constraintTop_toTopOf="@+id/video" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view"
@@ -84,18 +96,17 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title"
-        app:strokeWidth="0dp"
-        app:cardElevation="2dp">
+        app:strokeWidth="0dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_video"
             android:layout_width="match_parent"
             android:layout_height="240dp"
-            android:scaleType="fitXY"
-             />
+            android:scaleType="fitXY" />
 
         <View
             android:id="@+id/ic_play"
@@ -104,13 +115,7 @@
             android:layout_gravity="center"
             android:background="@drawable/image_play" />
 
-        <ProgressBar
-            android:id="@+id/progress_video"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/lightBlue"
-            android:visibility="invisible" />
+
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -154,11 +159,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layoutDirection="ltr"
+        android:text="@string/_0"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_progress"
-        tools:text="0" />
+        app:layout_constraintTop_toBottomOf="@+id/text_progress" />
 
     <TextView
         android:id="@+id/text_percentage"
@@ -276,16 +281,16 @@
     </LinearLayout>
 
     <Button
-    android:layout_width="0dp"
-    android:layout_height="60dp"
-    android:layout_margin="18dp"
-    android:background="@drawable/back_btn_video"
-    android:text="@string/guide"
-    android:textColor="@color/primary"
-    android:textSize="24sp"
-    app:backgroundTint="@null"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/progress_percentage" />
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_margin="18dp"
+        android:background="@drawable/back_btn_video"
+        android:text="@string/guide"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_percentage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

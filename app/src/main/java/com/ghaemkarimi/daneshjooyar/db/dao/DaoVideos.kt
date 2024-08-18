@@ -23,4 +23,7 @@ interface DaoVideos {
     @Query("UPDATE ${DBHelper.TABLE_VIDEOS} SET seen = :state WHERE id = :idVideo")
     fun updateSeen(state: Boolean ,idVideo: Int)
 
+    @Query("UPDATE ${DBHelper.TABLE_VIDEOS} SET duration = :duration WHERE id = :idVideo")
+    fun updateDuration(duration: Int ,idVideo: Int)
+
 }
