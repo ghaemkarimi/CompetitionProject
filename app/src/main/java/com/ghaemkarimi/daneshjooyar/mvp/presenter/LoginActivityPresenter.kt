@@ -1,5 +1,6 @@
 package com.ghaemkarimi.daneshjooyar.mvp.presenter
 
+import android.view.Window
 import com.ghaemkarimi.daneshjooyar.mvp.ext.LifeCycle
 import com.ghaemkarimi.daneshjooyar.mvp.ext.SetState
 import com.ghaemkarimi.daneshjooyar.mvp.model.LoginActivityModel
@@ -11,7 +12,13 @@ class LoginActivityPresenter(
 ) : LifeCycle {
 
     override fun onCreate() {
+
         setData()
+
+    }
+
+    override fun hideStatusBar(window: Window) {
+        view.hideStatusBar(window)
     }
 
     private fun setData() {

@@ -1,5 +1,7 @@
 package com.ghaemkarimi.daneshjooyar.mvp.presenter
 
+import android.view.Window
+import com.ghaemkarimi.daneshjooyar.db.model.DaoSeenSecondsModel
 import com.ghaemkarimi.daneshjooyar.db.model.DaoVideoModel
 import com.ghaemkarimi.daneshjooyar.mvp.ext.LifeCycle
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnBindData
@@ -14,14 +16,16 @@ class VideoActivityPresenter(
 ) : LifeCycle {
 
     override fun onCreate() {
+
         setData()
+
     }
 
-    override fun onDestroy() {
-        model.onDestroy()
+    override fun hideStatusBar(window: Window) {
+        view.hideStatusBar(window)
     }
 
-    fun saveStateVideo(): Pair<Int, Boolean> = view.saveStateVideo()
+    fun saveStateVideo() = view.saveStateVideo()
 
     fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
         view.getStateVideo(currentPosition, isPlaying)
@@ -32,10 +36,24 @@ class VideoActivityPresenter(
         view.setData(idVideo, object : OnBindData {
             override fun setVideo(id: Int) {
                 model.getVideo(id, object : OnBindData {
-                    override fun getVideo(video: DaoVideoModel, seconds: List<Int>) {
-                        view.setVideoData(video, seconds, videoCount, object : OnBindData {
-                            override fun updateDuration(duration: Int, idVideo: Int) {
-                                model.updateDuration(duration, idVideo)
+                    override fun getVideo(video: DaoVideoModel) {
+                        model.getSeconds(video.id, object : OnBindData {
+                            override fun getSeconds(seconds: List<Int>) {
+                                view.setVideoData(video, videoCount, seconds, object : OnBindData {
+
+                                    override fun updateDuration(duration: Int, idVideo: Int) {
+                                        model.updateDuration(duration, idVideo)
+                                    }
+
+                                    override fun saveSeconds(second: DaoSeenSecondsModel) {
+                                        model.saveSeconds(second)
+                                    }
+
+                                    override fun updateSeen(state: Boolean, idVideo: Int) {
+                                        model.setSeenVideo(state, idVideo)
+                                    }
+
+                                })
                             }
                         })
                     }

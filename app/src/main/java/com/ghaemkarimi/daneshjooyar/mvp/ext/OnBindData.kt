@@ -9,7 +9,9 @@ interface OnBindData {
 
     fun getVideos(videos: List<VideoModel>) {}
 
-    fun getVideo(video: DaoVideoModel, seconds: List<Int>) {}
+    fun getVideo(video: DaoVideoModel) {}
+
+    fun getSeconds(seconds: List<Int>) {}
 
     fun updateSeen(state: Boolean, idVideo: Int) {}
 

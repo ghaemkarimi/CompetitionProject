@@ -51,8 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         app:errorIconTint="@null"
-        android:layoutDirection="rtl"
-        android:textDirection="rtl"
+        android:layoutDirection="ltr"
+        android:textDirection="ltr"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
@@ -67,7 +67,7 @@
             android:layout_height="match_parent"
             android:hint="@string/phone_number"
             android:textDirection="rtl"
-            android:layoutDirection="rtl"
+            android:layoutDirection="ltr"
             android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -122,9 +122,10 @@
 
     <TextView
         android:id="@+id/txt_bottom"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:layoutDirection="ltr"

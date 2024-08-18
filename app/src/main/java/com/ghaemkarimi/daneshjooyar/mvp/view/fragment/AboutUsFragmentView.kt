@@ -33,7 +33,7 @@ class AboutUsFragmentView(private val context: Context) {
     fun setIntents() {
 
         instagramIntent = setIntent(
-            "https://www.instagram.com/lrn.ir?igsh=dDFndWZpMzl1dmhr",
+            "https://instagram.com/lrn.ir?igsh=dDFndWZpMzl1dmhr",
             "com.instagram.android"
         )
 

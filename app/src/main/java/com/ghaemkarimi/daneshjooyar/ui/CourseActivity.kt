@@ -18,6 +18,7 @@ class CourseActivity : AppCompatActivity(), OnFinish {
 
         presenter = CourseActivityPresenter(view, CourseActivityModel(this))
         presenter.onCreate()
+        presenter.hideStatusBar(window)
 
     }
 
@@ -30,9 +31,32 @@ class CourseActivity : AppCompatActivity(), OnFinish {
         presenter.onStart()
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.onPause()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val (currentPosition, statePlay) = presenter.saveStateVideo()
+        outState.putInt("position", currentPosition)
+        outState.putBoolean("isPlay", statePlay)
+
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        val currentPosition = savedInstanceState.getInt("position")
+        val isPlaying = savedInstanceState.getBoolean("isPlay")
+        presenter.getStateVideo(currentPosition, isPlaying)
+
     }
 
 }

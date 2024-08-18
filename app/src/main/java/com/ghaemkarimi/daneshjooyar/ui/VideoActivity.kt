@@ -21,16 +21,12 @@ class VideoActivity : AppCompatActivity(), OnFinish {
 
         presenter = VideoActivityPresenter(view, VideoActivityModel(this), id, videoCount)
         presenter.onCreate()
+        presenter.hideStatusBar(window)
 
     }
 
     override fun finished() {
         finish()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

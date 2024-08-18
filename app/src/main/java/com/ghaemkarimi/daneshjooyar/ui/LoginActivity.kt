@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity(), OnFinish {
 
         val presenter = LoginActivityPresenter(view, LoginActivityModel(this))
         presenter.onCreate()
+        presenter.hideStatusBar(window)
 
     }
 

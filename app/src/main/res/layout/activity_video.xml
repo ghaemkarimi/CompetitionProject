@@ -82,7 +82,6 @@
         android:id="@+id/progress_video"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_gravity="center"
         android:indeterminateTint="@color/lightBlue"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/video"
@@ -146,6 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:layoutDirection="ltr"
+        android:textDirection="ltr"
         android:text="@string/progress_percentage"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -281,6 +281,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_helper"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_margin="18dp"

@@ -20,7 +20,8 @@ class FirstActivity : AppCompatActivity(), OnFinish {
 
     override fun onStart() {
         super.onStart()
-        presenter.onStart()
+        presenter.onCreate()
+        presenter.hideStatusBar(window)
     }
 
     override fun finished() {

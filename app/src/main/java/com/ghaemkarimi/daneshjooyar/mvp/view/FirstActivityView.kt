@@ -4,10 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Handler
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Window
+import android.view.WindowInsets
+import android.view.WindowManager
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityFirstBinding
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
 import com.ghaemkarimi.daneshjooyar.ui.LoginActivity
@@ -85,6 +89,19 @@ class FirstActivityView(private val context: Context, private val onFinish: OnFi
         val intent = Intent(setting)
         context.startActivity(intent)
         binding.dialog.visibility = View.INVISIBLE
+
+    }
+
+    fun hideStatusBar(window: Window) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
 
     }
 

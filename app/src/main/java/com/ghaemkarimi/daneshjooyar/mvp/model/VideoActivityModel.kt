@@ -7,7 +7,6 @@ import com.ghaemkarimi.daneshjooyar.mvp.ext.OnBindData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.time.Duration
 
 class VideoActivityModel(context: Context) {
 
@@ -18,11 +17,26 @@ class VideoActivityModel(context: Context) {
         CoroutineScope(Dispatchers.IO).launch {
 
             val video = db.videos().getVideo(idVideo)
+
+            launch(Dispatchers.Main) {
+
+                onBindData.getVideo(video)
+
+            }
+
+        }
+
+    }
+
+    fun getSeconds(idVideo: Int, onBindData: OnBindData) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+
             val seconds = db.seenSeconds().getSecondsSeen(idVideo)
 
             launch(Dispatchers.Main) {
 
-                onBindData.getVideo(video, seconds)
+                onBindData.getSeconds(seconds)
 
             }
 
@@ -58,10 +72,6 @@ class VideoActivityModel(context: Context) {
 
         }
 
-    }
-
-    fun onDestroy() {
-        db.close()
     }
 
 }

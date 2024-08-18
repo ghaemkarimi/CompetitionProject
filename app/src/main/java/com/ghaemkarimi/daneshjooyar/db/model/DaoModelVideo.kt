@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.ghaemkarimi.daneshjooyar.db.DBHelper
-import java.time.Duration
 
 @Entity(tableName = DBHelper.TABLE_VIDEOS)
 data class DaoVideoModel(
@@ -36,7 +35,11 @@ data class DaoVideoModel(
 )
 data class DaoSeenSecondsModel(
 
-    @PrimaryKey val idVideo: Int,
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val idVideo: Int,
+
     @ColumnInfo val secondSeen: Int
 
 )

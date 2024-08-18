@@ -15,6 +15,7 @@ class GhavaninActivity : AppCompatActivity(), OnFinish {
         setContentView(view.binding.root)
         val presenter = GhavaninActivityPresenter(view, GhavaninActivityModel())
         presenter.onCreate()
+        presenter.hideStatusBar(window)
     }
 
     override fun finished() {

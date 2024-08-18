@@ -1,5 +1,6 @@
 package com.ghaemkarimi.daneshjooyar.mvp.presenter
 
+import android.view.Window
 import com.ghaemkarimi.daneshjooyar.adapter.model.VideoModel
 import com.ghaemkarimi.daneshjooyar.mvp.ext.LifeCycle
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnBindData
@@ -19,10 +20,19 @@ class CourseActivityPresenter(
 
     }
 
+    override fun hideStatusBar(window: Window) {
+        view.hideStatusBar(window)
+    }
+
     override fun onStart() {
 
         setRecyclerVideo()
+        view.setVideo(model.videoUri())
 
+    }
+
+    override fun onPause() {
+        view.onPause()
     }
 
     override fun onDestroy() {
@@ -48,6 +58,12 @@ class CourseActivityPresenter(
             }
         })
 
+    }
+
+    fun saveStateVideo() = view.saveStateVideo()
+
+    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
+        view.getStateVideo(currentPosition, isPlaying, model.videoUri())
     }
 
 }

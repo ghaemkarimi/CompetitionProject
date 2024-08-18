@@ -22,7 +22,7 @@ class CourseActivityModel(context: Context) {
                 1,
                 R.drawable.image_about3,
                 "۸۲,۸۸۸ نفر",
-                "تعداد دانشچو",
+                "تعداد دانشجو",
                 R.drawable.image_about5,
                 "۴.۶ از ۵",
                 "امتیاز دانشجویان"
@@ -64,7 +64,8 @@ class CourseActivityModel(context: Context) {
 
             CoroutineScope(Dispatchers.IO).launch {
 
-                dataRecyclerVideos().forEach { db.videos().saveVideo(it) }
+                dataRecyclerVideos().forEach {
+                    db.videos().saveVideo(it) }
 
             }
 
@@ -102,7 +103,7 @@ class CourseActivityModel(context: Context) {
                 title = "2. آموزش گزینه حاشیه در تنظیمات پیشرفته ویجت ها",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
-                uri = "https://drive.usercontent.google.com/download?id=1Wl5nmwZ2jbK9kBUXTbOun4kJZrz86F_4&export=download&authuser=0&confirm=t&uuid=9602cfe0-77f9-4fea-9282-c4ba18c421d7&at=APZUnTXP6kytYOXYxbsmOJk7RhmU:1723875869647",
+                uri = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/Business/S05-Elementor-free-and-pro/S05-Part18-strok.mp4",
                 seen = false,
                 duration = 0
             ),
@@ -110,7 +111,7 @@ class CourseActivityModel(context: Context) {
                 title = "3. آموزش کار با نقشه گوگل و آیکن ها در المنتور",
                 description = """لورم ایسپوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چابگرها و متون بلکه روزنامه و محله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع و با هدف بهبود ابزار های کاربردی می باشد.""",
                 img = R.drawable.img_u2,
-                uri = "https://drive.usercontent.google.com/download?id=1GuN8hg99GMAETZVA30PXcC6HtZmahNXz&export=download&authuser=0&confirm=t&uuid=fa464b19-5e44-4375-86f4-e733261f84a4&at=APZUnTWSr49v9oq4ISzqt5eQMZBC:1723875910375",
+                uri = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/Business/S05-Elementor-free-and-pro/S05-Part26-icon-map.mp4",
                 seen = false,
                 duration = 0
             ),
@@ -123,6 +124,8 @@ class CourseActivityModel(context: Context) {
                 duration = 0
             ),
         )
+
+    fun videoUri() = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/elementor-free/intro.mp4"
 
     fun onDestroy() {
         db.close()

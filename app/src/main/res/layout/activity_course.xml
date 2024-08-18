@@ -2,10 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.CourseActivity">
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        android:layout_margin="18dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ProgressBar
+        android:id="@+id/progress_video"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:indeterminateTint="@color/lightBlue"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/video"
+        app:layout_constraintEnd_toEndOf="@+id/video"
+        app:layout_constraintStart_toStartOf="@+id/video"
+        app:layout_constraintTop_toTopOf="@+id/video" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view"
@@ -18,10 +39,6 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:strokeColor="@color/lightBlue">
 
-        <VideoView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,9 +46,11 @@
             app:srcCompat="@drawable/img_u2" />
 
         <View
+            android:id="@+id/ic_play"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@drawable/image_play" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -50,8 +69,9 @@
         android:id="@+id/line_videos"
         android:layout_width="0dp"
         android:layout_height="3dp"
-        android:visibility="invisible"
         android:background="@color/primary"
+        android:layoutDirection="ltr"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/back_videos"
         app:layout_constraintStart_toStartOf="@+id/back_videos"
         app:layout_constraintTop_toBottomOf="@+id/back_videos" />
@@ -117,6 +137,7 @@
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:background="@color/primary"
+        android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="@+id/back_information"
         app:layout_constraintStart_toEndOf="@+id/back_videos"
         app:layout_constraintTop_toBottomOf="@+id/back_information" />
@@ -125,8 +146,10 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
         android:text="@string/information"
         android:textColor="@color/black"
+        android:textDirection="ltr"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/back_information"
         app:layout_constraintEnd_toEndOf="@+id/back_information"
@@ -137,8 +160,10 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
         android:text="@string/videos"
         android:textColor="@color/black"
+        android:textDirection="ltr"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/back_videos"
         app:layout_constraintEnd_toEndOf="@+id/back_videos"
@@ -182,10 +207,9 @@
                 android:id="@+id/recycler_about_us"
                 android:layout_width="match_parent"
                 android:layout_height="292dp"
-                tools:listitem="@layout/item_recycler_about_us"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
-                 />
+                tools:listitem="@layout/item_recycler_about_us" />
 
         </LinearLayout>
 
@@ -195,8 +219,8 @@
         android:id="@+id/img_end_course"
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginTop="12dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,12 +229,12 @@
         app:srcCompat="@drawable/image_end_course" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_videos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:visibility="invisible"
-        android:id="@+id/recycler_videos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -233,8 +257,8 @@
         android:layout_height="0dp"
         android:background="@drawable/helper_shadow"
         app:layout_constraintBottom_toBottomOf="@+id/shadow"
-        app:layout_constraintTop_toTopOf="@+id/shadow"
-        app:layout_constraintStart_toStartOf="@+id/shadow" />
+        app:layout_constraintStart_toStartOf="@+id/shadow"
+        app:layout_constraintTop_toTopOf="@+id/shadow" />
 
     <View
         android:id="@+id/view3"

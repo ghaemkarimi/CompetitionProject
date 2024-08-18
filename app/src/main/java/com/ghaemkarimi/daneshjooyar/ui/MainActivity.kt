@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), SetFragment {
 
         val presenter = MainActivityPresenter(view)
         presenter.onCreate()
+        presenter.hideStatusBar(window)
 
     }
 

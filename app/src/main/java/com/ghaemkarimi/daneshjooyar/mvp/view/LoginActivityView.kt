@@ -2,6 +2,7 @@ package com.ghaemkarimi.daneshjooyar.mvp.view
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
@@ -10,6 +11,9 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Window
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityLoginBinding
@@ -232,6 +236,19 @@ class LoginActivityView(private val context: Context, private val onFinish: OnFi
         spannableString.setSpan(clickableSpan, 0, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         return spannableString
+
+    }
+
+    fun hideStatusBar(window: Window) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
 
     }
 
