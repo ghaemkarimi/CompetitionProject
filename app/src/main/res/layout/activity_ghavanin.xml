@@ -51,7 +51,6 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layoutDirection="ltr"
-            android:textDirection="ltr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

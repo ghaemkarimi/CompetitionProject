@@ -16,9 +16,7 @@ class VideoActivityPresenter(
 ) : LifeCycle {
 
     override fun onCreate() {
-
         setData()
-
     }
 
     override fun hideStatusBar(window: Window) {
@@ -27,7 +25,8 @@ class VideoActivityPresenter(
 
     fun saveStateVideo() = view.saveStateVideo()
 
-    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
+    fun getStateVideo(currentPosition: Int, isPlaying: Boolean, idVideo: Int) {
+        setDataVideo(idVideo)
         view.getStateVideo(currentPosition, isPlaying)
     }
 
@@ -35,26 +34,32 @@ class VideoActivityPresenter(
 
         view.setData(idVideo, object : OnBindData {
             override fun setVideo(id: Int) {
-                model.getVideo(id, object : OnBindData {
-                    override fun getVideo(video: DaoVideoModel) {
-                        model.getSeconds(video.id, object : OnBindData {
-                            override fun getSeconds(seconds: List<Int>) {
-                                view.setVideoData(video, videoCount, seconds, object : OnBindData {
+                setDataVideo(id)
+            }
+        })
 
-                                    override fun updateDuration(duration: Int, idVideo: Int) {
-                                        model.updateDuration(duration, idVideo)
-                                    }
+    }
 
-                                    override fun saveSeconds(second: DaoSeenSecondsModel) {
-                                        model.saveSeconds(second)
-                                    }
+    private fun setDataVideo(id: Int) {
 
-                                    override fun updateSeen(state: Boolean, idVideo: Int) {
-                                        model.setSeenVideo(state, idVideo)
-                                    }
+        model.getVideo(id, object : OnBindData {
+            override fun getVideo(video: DaoVideoModel) {
+                model.getSeconds(id, object : OnBindData {
+                    override fun getSeconds(seconds: List<Int>) {
+                        view.setVideoData(video, videoCount, seconds, object : OnBindData {
 
-                                })
+                            override fun updateDuration(duration: Int, idVideo: Int) {
+                                model.updateDuration(duration, idVideo)
                             }
+
+                            override fun saveSeconds(second: DaoSeenSecondsModel) {
+                                model.saveSeconds(second)
+                            }
+
+                            override fun updateSeen(state: Boolean, idVideo: Int) {
+                                model.setSeenVideo(state, idVideo)
+                            }
+
                         })
                     }
                 })

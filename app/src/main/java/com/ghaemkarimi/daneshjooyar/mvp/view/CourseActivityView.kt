@@ -29,37 +29,35 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
     private var endCourse = false
     private val video = binding.video
     private val controller = MediaController(context)
-    private var isPlayingVideo = false
-    private var currentPositionVideo = 0
 
     fun setData() {
 
-        binding.backInformation.setOnClickListener {
-            binding.lineInformation.visibility = View.VISIBLE
-            binding.scrollView.visibility = View.VISIBLE
-            binding.lineVideos.visibility = View.INVISIBLE
-            binding.recyclerVideos.visibility = View.INVISIBLE
+        binding.backInformation?.setOnClickListener {
+            binding.lineInformation?.visibility = View.VISIBLE
+            binding.scrollView?.visibility = View.VISIBLE
+            binding.lineVideos?.visibility = View.INVISIBLE
+            binding.recyclerVideos?.visibility = View.INVISIBLE
             binding.backInformation.setBackgroundResource(backBtn)
-            binding.backVideos.background = null
-            binding.imgEndCourse.visibility = View.GONE
+            binding.backVideos?.background = null
+            binding.imgEndCourse?.visibility = View.GONE
         }
 
-        binding.backVideos.setOnClickListener {
-            binding.lineInformation.visibility = View.INVISIBLE
-            binding.scrollView.visibility = View.INVISIBLE
-            binding.lineVideos.visibility = View.VISIBLE
-            binding.recyclerVideos.visibility = View.VISIBLE
+        binding.backVideos?.setOnClickListener {
+            binding.lineInformation?.visibility = View.INVISIBLE
+            binding.scrollView?.visibility = View.INVISIBLE
+            binding.lineVideos?.visibility = View.VISIBLE
+            binding.recyclerVideos?.visibility = View.VISIBLE
             binding.backVideos.setBackgroundResource(backBtn)
-            binding.backInformation.background = null
+            binding.backInformation?.background = null
             if (endCourse)
-                binding.imgEndCourse.visibility = View.VISIBLE
+                binding.imgEndCourse?.visibility = View.VISIBLE
         }
 
-        binding.arrowBack.setOnClickListener {
+        binding.arrowBack?.setOnClickListener {
             onFinish.finished()
         }
 
-        binding.support.setOnClickListener {
+        binding.support?.setOnClickListener {
             setDialog.setDialogSupport()
         }
 
@@ -69,23 +67,23 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
         val adapter = AdapterRecyclerAboutUs(context, data)
 
-        binding.recyclerAboutUs.layoutManager = LinearLayoutManager(
+        binding.recyclerAboutUs?.layoutManager = LinearLayoutManager(
             context, RecyclerView.VERTICAL, false
         )
 
-        binding.recyclerAboutUs.adapter = adapter
+        binding.recyclerAboutUs?.adapter = adapter
 
     }
 
     fun setRecyclerVideo(data: List<VideoModel>, setState: SetState) {
 
         endCourse = false
-        val adapter = AdapterRecyclerVideos(context, data)
+        val adapter = AdapterRecyclerVideos(context, data, setState)
 
-        binding.recyclerVideos.layoutManager =
+        binding.recyclerVideos?.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        binding.recyclerVideos.adapter = adapter
+        binding.recyclerVideos?.adapter = adapter
 
         data.forEach {
             if (!it.seen) {
@@ -96,8 +94,8 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
         }
 
         if (endCourse) {
-            if (binding.recyclerVideos.visibility == View.VISIBLE)
-                binding.imgEndCourse.visibility = View.VISIBLE
+            if (binding.recyclerVideos?.visibility == View.VISIBLE)
+                binding.imgEndCourse?.visibility = View.VISIBLE
             setState.getState(true)
         }
 
@@ -119,18 +117,19 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
     fun setVideo(uri: String) {
 
         video.setVideoURI(Uri.parse(uri))
-        binding.icPlay.setOnClickListener { startVideo() }
-        if (isPlayingVideo) startVideo()
+        binding.icPlay.setOnClickListener { startVideo(true) }
 
     }
 
-    private fun startVideo() {
+    private fun startVideo(btnClick: Boolean, currentPosition: Int = 0) {
 
         binding.cardView.visibility = View.INVISIBLE
         video.visibility = View.VISIBLE
         binding.progressVideo.visibility = View.VISIBLE
-        video.start()
+        if (btnClick)
+            video.start()
         video.setOnPreparedListener {
+            video.seekTo(currentPosition)
             binding.progressVideo.visibility = View.INVISIBLE
             it.setOnVideoSizeChangedListener { _, _, _ ->
                 video.setMediaController(controller)
@@ -143,20 +142,17 @@ class CourseActivityView(private val context: Context, private val onFinish: OnF
 
     fun onPause() {
 
-        binding.cardView.visibility = View.VISIBLE
         video.visibility = View.INVISIBLE
+        binding.cardView.visibility = View.VISIBLE
         binding.progressVideo.visibility = View.INVISIBLE
-        video.stopPlayback()
 
     }
 
     fun saveStateVideo() = Pair(video.currentPosition, video.isPlaying)
 
-    fun getStateVideo(currentPosition: Int, isPlaying: Boolean, uri: String) {
+    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
 
-        currentPositionVideo = currentPosition
-        isPlayingVideo = isPlaying
-        setVideo(uri)
+        startVideo(isPlaying, currentPosition)
 
     }
 

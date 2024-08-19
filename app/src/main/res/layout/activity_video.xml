@@ -114,8 +114,6 @@
             android:layout_gravity="center"
             android:background="@drawable/image_play" />
 
-
-
     </com.google.android.material.card.MaterialCardView>
 
     <ScrollView
@@ -172,6 +170,7 @@
         android:text="@string/_100"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:layoutDirection="ltr"
         app:layout_constraintStart_toEndOf="@+id/txt_percentage"
         app:layout_constraintTop_toBottomOf="@+id/text_progress" />
 
@@ -180,6 +179,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="3dp"
+        android:layoutDirection="ltr"
         android:progressTint="@color/lightBlue"
         app:layout_constraintEnd_toEndOf="@+id/text_description"
         app:layout_constraintStart_toStartOf="@+id/txt_percentage"
@@ -198,6 +198,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="18dp"
+        android:layoutDirection="ltr"
         android:background="@drawable/back_btn_video"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -247,6 +248,7 @@
         android:layout_marginBottom="18dp"
         android:background="@drawable/back_btn_video"
         app:backgroundTint="@null"
+        android:layoutDirection="ltr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_next" />

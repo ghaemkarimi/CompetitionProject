@@ -29,17 +29,20 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
     private var percentageSeen = ArrayList<Int>()
     private var currentPositionVideo = 0
     private var isPlayingVideo = false
+    private var idVideo = 0
 
     fun setData(id: Int, onBindData: OnBindData) {
 
         onBindData.setVideo(id)
-        var idVideo = id
+        idVideo = id
 
         binding.btnNext?.setOnClickListener {
             idVideo += 1
             onBindData.setVideo(idVideo)
             video.stopPlayback()
             binding.progressVideo.visibility = View.INVISIBLE
+            video.visibility = View.INVISIBLE
+            binding.cardView?.visibility = View.VISIBLE
         }
 
         binding.btnPreview?.setOnClickListener {
@@ -47,8 +50,13 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
             onBindData.setVideo(idVideo)
             video.stopPlayback()
             binding.progressVideo.visibility = View.INVISIBLE
+            video.visibility = View.INVISIBLE
+            binding.cardView?.visibility = View.VISIBLE
         }
 
+        binding.btnHelper?.setOnClickListener {
+            Toast.makeText(context, "راهنما", Toast.LENGTH_SHORT).show()
+        }
         binding.arrowBack?.setOnClickListener { onFinish.finished() }
         binding.support?.setOnClickListener { dialog.setDialogSupport() }
 
@@ -60,6 +68,8 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
         seconds: List<Int>,
         onBindData: OnBindData
     ) {
+
+        idVideo = data.id
 
         if (!isPlayingVideo && currentPositionVideo == 0) {
             video.visibility = View.INVISIBLE
@@ -112,10 +122,6 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
         if (isPlayingVideo) {
             initVideo(data.id, data.seen, onBindData)
-        }
-
-        binding.btnHelper?.setOnClickListener {
-            Toast.makeText(context, "راهنما", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -173,7 +179,7 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
     }
 
-    fun saveStateVideo() = Pair(video.currentPosition, video.isPlaying)
+    fun saveStateVideo() = Triple(video.currentPosition, video.isPlaying, idVideo)
 
     fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
 

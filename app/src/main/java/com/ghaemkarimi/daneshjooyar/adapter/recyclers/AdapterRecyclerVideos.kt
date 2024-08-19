@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ghaemkarimi.daneshjooyar.R
 import com.ghaemkarimi.daneshjooyar.adapter.model.VideoModel
 import com.ghaemkarimi.daneshjooyar.databinding.ItemRecyclerVideosBinding
+import com.ghaemkarimi.daneshjooyar.mvp.ext.SetState
 import com.ghaemkarimi.daneshjooyar.ui.VideoActivity
 
 class AdapterRecyclerVideos(
     private val context: Context,
-    private val videos: List<VideoModel>
+    private val videos: List<VideoModel>,
+    private val setState: SetState
 ) : RecyclerView.Adapter<AdapterRecyclerVideos.ViewHolder>() {
 
     inner class ViewHolder(
@@ -30,6 +32,7 @@ class AdapterRecyclerVideos(
             }
 
             binding.root.setOnClickListener {
+                setState.onPause()
                 val intent = Intent(context, VideoActivity::class.java)
                 intent.putExtra("id", data.id)
                 intent.putExtra("videoCount", videos.size)

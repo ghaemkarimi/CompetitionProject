@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".ui.VideoActivity">
 
     <VideoView
         android:id="@+id/video"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
          />
@@ -20,10 +21,7 @@
         android:layout_gravity="center"
         android:indeterminateTint="@color/lightBlue"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/video"
-        app:layout_constraintEnd_toEndOf="@+id/video"
-        app:layout_constraintStart_toStartOf="@+id/video"
-        app:layout_constraintTop_toTopOf="@+id/video" />
+         />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_video"
@@ -36,19 +34,14 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@drawable/image_play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center" />
 
     <ProgressBar
         android:id="@+id/progress_percentage"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="3dp"
         android:progressTint="@color/lightBlue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_gravity="bottom" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

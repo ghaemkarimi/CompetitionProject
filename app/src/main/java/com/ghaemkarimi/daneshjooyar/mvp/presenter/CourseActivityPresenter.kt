@@ -17,6 +17,7 @@ class CourseActivityPresenter(
 
         model.saveVideo()
         setData()
+        view.setVideo(model.videoUri())
 
     }
 
@@ -27,16 +28,17 @@ class CourseActivityPresenter(
     override fun onStart() {
 
         setRecyclerVideo()
-        view.setVideo(model.videoUri())
 
-    }
-
-    override fun onPause() {
-        view.onPause()
     }
 
     override fun onDestroy() {
         model.onDestroy()
+    }
+
+    fun saveStateVideo() = view.saveStateVideo()
+
+    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
+        view.getStateVideo(currentPosition, isPlaying)
     }
 
     private fun setData() {
@@ -48,22 +50,22 @@ class CourseActivityPresenter(
 
     private fun setRecyclerVideo() {
 
-        model.getDataForRecyclerVideo(object : OnBindData{
+        model.getDataForRecyclerVideo(object : OnBindData {
             override fun getVideos(videos: List<VideoModel>) {
-                view.setRecyclerVideo(videos, object : SetState{
+                view.setRecyclerVideo(videos, object : SetState {
+
                     override fun getState(state: Boolean) {
                         model.saveStateSeen(state)
                     }
+
+                    override fun onPause() {
+                        view.onPause()
+                    }
+
                 })
             }
         })
 
-    }
-
-    fun saveStateVideo() = view.saveStateVideo()
-
-    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
-        view.getStateVideo(currentPosition, isPlaying, model.videoUri())
     }
 
 }

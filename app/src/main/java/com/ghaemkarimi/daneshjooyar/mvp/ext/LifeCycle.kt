@@ -8,8 +8,6 @@ interface LifeCycle {
 
     fun onStart() {}
 
-    fun onPause() {}
-
     fun onDestroy() {}
 
     fun hideStatusBar(window: Window) {}
