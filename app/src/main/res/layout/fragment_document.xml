@@ -16,9 +16,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            app:srcCompat="@drawable/image_end_course" />
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/img_end_course" />
 
     </LinearLayout>
 
