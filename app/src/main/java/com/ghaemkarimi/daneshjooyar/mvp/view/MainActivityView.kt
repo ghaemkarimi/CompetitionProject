@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.Window
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowInsetsCompat
 import com.ghaemkarimi.daneshjooyar.customView.Item
 import com.ghaemkarimi.daneshjooyar.customView.Type
 import com.ghaemkarimi.daneshjooyar.databinding.ActivityMainBinding

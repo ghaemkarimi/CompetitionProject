@@ -3,7 +3,6 @@ package com.ghaemkarimi.daneshjooyar.mvp.ext
 import com.ghaemkarimi.daneshjooyar.adapter.model.VideoModel
 import com.ghaemkarimi.daneshjooyar.db.model.DaoSeenSecondsModel
 import com.ghaemkarimi.daneshjooyar.db.model.DaoVideoModel
-import java.time.Duration
 
 interface OnBindData {
 

@@ -1,7 +1,6 @@
 package com.ghaemkarimi.daneshjooyar.ui
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
 import com.ghaemkarimi.daneshjooyar.mvp.model.VideoActivityModel
@@ -33,10 +32,9 @@ class VideoActivity : AppCompatActivity(), OnFinish {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        val (currentPosition, statePlay, idVideo) = presenter.saveStateVideo()
+        val (currentPosition, statePlay) = presenter.saveStateVideo()
         outState.putInt("position", currentPosition)
         outState.putBoolean("isPlay", statePlay)
-        outState.putInt("idVideo", idVideo)
 
     }
 
@@ -45,8 +43,7 @@ class VideoActivity : AppCompatActivity(), OnFinish {
 
         val currentPosition = savedInstanceState.getInt("position")
         val isPlaying = savedInstanceState.getBoolean("isPlay")
-        val idVideo = savedInstanceState.getInt("idVideo")
-        presenter.getStateVideo(currentPosition, isPlaying, idVideo)
+        presenter.getStateVideo(currentPosition, isPlaying)
 
     }
 

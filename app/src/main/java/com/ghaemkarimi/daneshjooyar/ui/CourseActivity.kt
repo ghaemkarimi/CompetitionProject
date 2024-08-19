@@ -1,7 +1,6 @@
 package com.ghaemkarimi.daneshjooyar.ui
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ghaemkarimi.daneshjooyar.mvp.ext.OnFinish
 import com.ghaemkarimi.daneshjooyar.mvp.model.CourseActivityModel

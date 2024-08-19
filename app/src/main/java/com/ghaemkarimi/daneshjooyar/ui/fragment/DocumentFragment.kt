@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ghaemkarimi.daneshjooyar.customView.Item
-import com.ghaemkarimi.daneshjooyar.databinding.FragmentDocumentBinding
-import com.ghaemkarimi.daneshjooyar.mvp.ext.SetFragment
 import com.ghaemkarimi.daneshjooyar.mvp.model.fragment.DocumentFragmentModel
 import com.ghaemkarimi.daneshjooyar.mvp.presenter.fragment.DocumentFragmentPresenter
 import com.ghaemkarimi.daneshjooyar.mvp.view.fragment.DocumentFragmentView

@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
@@ -29,12 +28,11 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
     private var percentageSeen = ArrayList<Int>()
     private var currentPositionVideo = 0
     private var isPlayingVideo = false
-    private var idVideo = 0
 
     fun setData(id: Int, onBindData: OnBindData) {
 
         onBindData.setVideo(id)
-        idVideo = id
+        var idVideo = id
 
         binding.btnNext?.setOnClickListener {
             idVideo += 1
@@ -68,8 +66,6 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
         seconds: List<Int>,
         onBindData: OnBindData
     ) {
-
-        idVideo = data.id
 
         if (!isPlayingVideo && currentPositionVideo == 0) {
             video.visibility = View.INVISIBLE
@@ -170,7 +166,7 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
                     }
                     handler.postDelayed(this, 1000)
                 } catch (e: Exception) {
-                    Log.e("ERROR", e.message.toString())
+                    video.seekTo(0)
                 }
 
             }
@@ -179,7 +175,7 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
     }
 
-    fun saveStateVideo() = Triple(video.currentPosition, video.isPlaying, idVideo)
+    fun saveStateVideo() = Pair(video.currentPosition, video.isPlaying)
 
     fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
 
