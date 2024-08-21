@@ -28,6 +28,7 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
     private var percentageSeen = ArrayList<Int>()
     private var currentPositionVideo = 0
     private var isPlayingVideo = false
+    private var idVideo = 0
 
     fun setData(id: Int, onBindData: OnBindData) {
 
@@ -35,21 +36,14 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
         var idVideo = id
 
         binding.btnNext?.setOnClickListener {
+            releaseVideo()
             idVideo += 1
             onBindData.setVideo(idVideo)
-            video.stopPlayback()
-            binding.progressVideo.visibility = View.INVISIBLE
-            video.visibility = View.INVISIBLE
-            binding.cardView?.visibility = View.VISIBLE
         }
-
         binding.btnPreview?.setOnClickListener {
+            releaseVideo()
             idVideo -= 1
             onBindData.setVideo(idVideo)
-            video.stopPlayback()
-            binding.progressVideo.visibility = View.INVISIBLE
-            video.visibility = View.INVISIBLE
-            binding.cardView?.visibility = View.VISIBLE
         }
 
         binding.btnHelper?.setOnClickListener {
@@ -67,14 +61,7 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
         onBindData: OnBindData
     ) {
 
-        if (!isPlayingVideo && currentPositionVideo == 0) {
-            video.visibility = View.INVISIBLE
-            binding.cardView?.visibility = View.VISIBLE
-            binding.imgVideo.visibility = View.VISIBLE
-            binding.icPlay.visibility = View.VISIBLE
-        }
-
-        binding.icPlay.setOnClickListener { initVideo(data.id, data.seen, onBindData) }
+        idVideo = data.id
 
         percentageSeen.clear()
         percentageSeen.addAll(seconds)
@@ -88,20 +75,20 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
         val uri = Uri.parse(data.uri)
         video.setVideoURI(uri)
+        video.setMediaController(controller)
+        controller.hide()
 
         video.setOnPreparedListener {
             binding.progressVideo.visibility = View.INVISIBLE
+            video.seekTo(currentPositionVideo)
             if (data.duration == 0) {
                 val duration = video.duration / 1000
                 setPercentage(percentageSeen.size, duration)
                 onBindData.updateDuration(duration, data.id)
             }
             it.setOnVideoSizeChangedListener { _, _, _ ->
-                video.setMediaController(controller)
                 controller.setAnchorView(video)
-                controller.hide()
             }
-            video.seekTo(currentPositionVideo)
         }
 
         binding.txtTitle?.text = data.title
@@ -110,15 +97,13 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
         binding.preview?.visibility = View.VISIBLE
         binding.next?.visibility = View.VISIBLE
-
         when (data.id) {
             1 -> binding.preview?.visibility = View.INVISIBLE
             videoCount -> binding.next?.visibility = View.INVISIBLE
         }
 
-        if (isPlayingVideo) {
-            initVideo(data.id, data.seen, onBindData)
-        }
+        binding.icPlay.setOnClickListener { initVideo(data.id, data.seen, onBindData) }
+        if (isPlayingVideo) initVideo(data.id, data.seen, onBindData)
 
     }
 
@@ -133,11 +118,7 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
     private fun initVideo(idVideo: Int, seen: Boolean, onBindData: OnBindData) {
 
-        binding.progressVideo.visibility = View.VISIBLE
-        binding.cardView?.visibility = View.GONE
-        binding.imgVideo.visibility = View.GONE
-        binding.icPlay.visibility = View.GONE
-        video.visibility = View.VISIBLE
+        videoVisible()
         video.start()
 
         val handler = Handler(Looper.getMainLooper())
@@ -147,7 +128,9 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
             override fun run() {
 
                 try {
+
                     if (video.isPlaying) {
+
                         if (video.currentPosition / 1000 !in percentageSeen) {
                             onBindData.saveSeconds(
                                 DaoSeenSecondsModel(
@@ -157,17 +140,19 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
                             )
                             percentageSeen.add(video.currentPosition / 1000)
                         }
+
                         val percentage = percentageSeen.size * 100 / (video.duration / 1000)
                         binding.txtPercentage?.text = percentage.toString()
                         binding.progressPercentage.progress = percentageSeen.size
                         binding.progressVideo.visibility = View.GONE
                         if (percentage >= 80 && !seen)
                             onBindData.updateSeen(true, idVideo)
+
                     }
+
                     handler.postDelayed(this, 1000)
-                } catch (e: Exception) {
-                    video.seekTo(0)
-                }
+
+                } catch (e: Exception) { video.seekTo(0) }
 
             }
 
@@ -175,15 +160,13 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
 
     }
 
-    fun saveStateVideo() = Pair(video.currentPosition, video.isPlaying)
+    fun saveStateVideo() = Triple(video.currentPosition, video.isPlaying, idVideo)
 
     fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
 
         currentPositionVideo = currentPosition
         isPlayingVideo = isPlaying
-        if (isPlayingVideo) {
-            video.visibility = View.VISIBLE
-        }
+        if (currentPosition != 0) videoVisible()
 
     }
 
@@ -197,6 +180,29 @@ class VideoActivityView(private val context: Context, private val onFinish: OnFi
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+
+    }
+
+    private fun videoVisible() {
+
+        binding.progressVideo.visibility = View.VISIBLE
+        binding.cardView?.visibility = View.GONE
+        binding.imgVideo.visibility = View.GONE
+        binding.icPlay.visibility = View.GONE
+        video.visibility = View.VISIBLE
+
+    }
+
+    private fun releaseVideo() {
+
+        currentPositionVideo = 0
+        isPlayingVideo = false
+        video.stopPlayback()
+        video.visibility = View.INVISIBLE
+        binding.progressVideo.visibility = View.INVISIBLE
+        binding.cardView?.visibility = View.VISIBLE
+        binding.imgVideo.visibility = View.VISIBLE
+        binding.icPlay.visibility = View.VISIBLE
 
     }
 

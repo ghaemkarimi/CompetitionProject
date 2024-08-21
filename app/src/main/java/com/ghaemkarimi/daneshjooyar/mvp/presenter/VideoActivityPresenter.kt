@@ -16,7 +16,7 @@ class VideoActivityPresenter(
 ) : LifeCycle {
 
     override fun onCreate() {
-        setData()
+        if (!model.isSet()) setData(idVideo)
     }
 
     override fun hideStatusBar(window: Window) {
@@ -25,13 +25,14 @@ class VideoActivityPresenter(
 
     fun saveStateVideo() = view.saveStateVideo()
 
-    fun getStateVideo(currentPosition: Int, isPlaying: Boolean) {
+    fun getStateVideo(currentPosition: Int, isPlaying: Boolean, idVideo: Int) {
+        if (model.isSet()) setData(idVideo)
         view.getStateVideo(currentPosition, isPlaying)
     }
 
-    private fun setData() {
+    private fun setData(idMain: Int) {
 
-        view.setData(idVideo, object : OnBindData {
+        view.setData(idMain, object : OnBindData {
             override fun setVideo(id: Int) {
                 model.getVideo(id, object : OnBindData {
                     override fun getVideo(video: DaoVideoModel) {

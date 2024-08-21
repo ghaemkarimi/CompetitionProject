@@ -11,6 +11,23 @@ import kotlinx.coroutines.launch
 class VideoActivityModel(context: Context) {
 
     private val db = DBHelper.getDatabase(context)
+    private val pref = context.getSharedPreferences("save", Context.MODE_PRIVATE)
+
+    fun isSet(): Boolean {
+
+        val isSet = pref.getBoolean("isSet", false)
+
+        if (!isSet) {
+
+            val editor = pref.edit()
+            editor.putBoolean("isSet", true)
+            editor.apply()
+
+        }
+
+        return isSet
+
+    }
 
     fun getVideo(idVideo: Int, onBindData: OnBindData) {
 

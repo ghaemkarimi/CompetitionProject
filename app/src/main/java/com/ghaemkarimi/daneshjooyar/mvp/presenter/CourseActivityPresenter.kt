@@ -58,7 +58,8 @@ class CourseActivityPresenter(
                         model.saveStateSeen(state)
                     }
 
-                    override fun onPause() {
+                    override fun onPause(isSet: Boolean) {
+                        model.isSet(isSet)
                         view.onPause()
                     }
 

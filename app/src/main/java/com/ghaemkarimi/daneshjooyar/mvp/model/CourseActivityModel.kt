@@ -125,6 +125,14 @@ class CourseActivityModel(context: Context) {
             ),
         )
 
+    fun isSet(isSet: Boolean) {
+
+        val editor = pref.edit()
+        editor.putBoolean("isSet", isSet)
+        editor.apply()
+
+    }
+
     fun videoUri() = "https://dl.daneshjooyar.com/mvie/Ahmadi-Alireza/elementor-free/intro.mp4"
 
     fun onDestroy() {

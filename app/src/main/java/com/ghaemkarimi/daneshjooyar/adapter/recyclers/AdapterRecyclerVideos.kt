@@ -32,7 +32,7 @@ class AdapterRecyclerVideos(
             }
 
             binding.root.setOnClickListener {
-                setState.onPause()
+                setState.onPause(false)
                 val intent = Intent(context, VideoActivity::class.java)
                 intent.putExtra("id", data.id)
                 intent.putExtra("videoCount", videos.size)

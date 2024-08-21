@@ -4,6 +4,6 @@ interface SetState {
 
     fun getState(state: Boolean) {}
 
-    fun onPause() {}
+    fun onPause(isSet: Boolean) {}
 
 }

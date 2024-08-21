@@ -32,7 +32,8 @@ class VideoActivity : AppCompatActivity(), OnFinish {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        val (currentPosition, statePlay) = presenter.saveStateVideo()
+        val (currentPosition, statePlay, idVideo) = presenter.saveStateVideo()
+        outState.putInt("idVideo", idVideo)
         outState.putInt("position", currentPosition)
         outState.putBoolean("isPlay", statePlay)
 
@@ -41,9 +42,10 @@ class VideoActivity : AppCompatActivity(), OnFinish {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
+        val idVideo = savedInstanceState.getInt("idVideo")
         val currentPosition = savedInstanceState.getInt("position")
         val isPlaying = savedInstanceState.getBoolean("isPlay")
-        presenter.getStateVideo(currentPosition, isPlaying)
+        presenter.getStateVideo(currentPosition, isPlaying, idVideo)
 
     }
 
